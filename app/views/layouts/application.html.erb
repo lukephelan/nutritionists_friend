@@ -1,17 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>NutritionistsFriend</title>
+  <title>Nutritionist's Friend</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
+  <header>
+    <h1>Nutritionist's Friend</h1>
+  </header>
+
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
 
 <%= yield %>
+
+  <footer>
+    <p>This site uses the <a href="https://ndb.nal.usda.gov/ndb/api/doc">
+      USDA National Nutrient Database API</a></p>
+  </footer>
 
 </body>
 </html>
