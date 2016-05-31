@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  intake_id: 
+  water_g: 1
+  energy_kcal: 1
+  protein_g: 1
+  total_fat_g: 1
+  carbohydrate_g: 1
+  total_dietary_fibre_g: 1
+  total_sugar_g: 1
+
+two:
+  intake_id: 
+  water_g: 1
+  energy_kcal: 1
+  protein_g: 1
+  total_fat_g: 1
+  carbohydrate_g: 1
+  total_dietary_fibre_g: 1
+  total_sugar_g: 1

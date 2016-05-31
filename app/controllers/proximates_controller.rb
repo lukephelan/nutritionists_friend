@@ -1,0 +1,2 @@
+class ProximatesController < ApplicationController
+end

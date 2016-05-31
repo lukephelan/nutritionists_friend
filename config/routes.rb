@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :proximates
+  resources :intakes
   get 'home/index'
   get 'registrations/sign_up_params'
   get 'registrations/account_update_params'

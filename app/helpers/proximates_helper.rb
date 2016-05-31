@@ -1,0 +1,2 @@
+module ProximatesHelper
+end

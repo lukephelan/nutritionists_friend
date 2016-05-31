@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 
+  logged_time: 2016-05-31 17:07:15
+  logged_date: 2016-05-31
+  consumed_item: MyString
+  consumed_uom: MyString
+  consumed_qty: 1
+
+two:
+  user_id: 
+  logged_time: 2016-05-31 17:07:15
+  logged_date: 2016-05-31
+  consumed_item: MyString
+  consumed_uom: MyString
+  consumed_qty: 1
