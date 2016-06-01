@@ -4,54 +4,11 @@
   <%= link_to 'Edit Details', edit_user_registration_path, method: :get %>
   <h4><%= current_user.first_name + " " + current_user.last_name %></h4>
 
+</div>
+
 <h2>Add a new intake to the log</h2>
 
 
-<%= form_for :intake, url: :intakes do |f| %>
-
-<% if @intake.errors.any? %>
-  <div id="error_explanation">
-    <h2>
-      <%= pluralize(@intake.errors.count, "error") %> prohibited
-      this log from being saved:
-    </h2>
-    <ul>
-      <% @intake.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
-
-
-  <div class="field">
-    <%= f.label :food %><br />
-    <%= f.text_field :consumed_item, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :unit_of_measure %><br />
-    <%= f.text_field :consumed_uom, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :consumed_quantity %><br />
-    <%= f.number_field :consumed_qty, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :time_consumed %><br />
-    <%= f.time_field :logged_time, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :date_consumed %><br />
-    <%= f.date_field :logged_date, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Record to log" %>
-  </div>
-<% end %>
+<%= render 'form' %>
 
 <%= link_to 'Back', user_session_path, method: :get %>
