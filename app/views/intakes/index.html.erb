@@ -1,0 +1,37 @@
+<div class="navigation">
+
+  <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
+  <%= link_to 'Edit Details', edit_user_registration_path, method: :get %>
+  <h4><%= current_user.first_name + " " + current_user.last_name %></h4>
+
+<h1>Food Log</h1>
+
+<table>
+  <tr>
+    <th>Consumed Item</th>
+    <th>Unit of Measure</th>
+    <th>Quantity</th>
+    <th>Time</th>
+    <th>Date</th>
+  </tr>
+
+  <% @intakes.each do |intake| %>
+    <tr>
+      <td><%= intake.consumed_item %></td>
+      <td><%= intake.consumed_uom %></td>
+      <td><%= intake.consumed_qty %></td>
+      <td><%= intake.logged_time %></td>
+      <td><%= intake.logged_date %></td>
+      <td><%= link_to 'Show', intake_path(intake) %></td>
+      <td><%= link_to 'Edit', edit_intake_path(intake) %></td>
+    </tr>
+  <% end %>
+</table>
+
+<div class="direct-to-log">
+
+  <%= link_to 'Add Entry to Log', new_intake_path, method: :get %>
+  <!-- <%= link_to 'View Log', controller: 'intakes' %> -->
+  <%= link_to 'Back', user_session_path, method: :get %>
+
+</div>

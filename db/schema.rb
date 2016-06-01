@@ -11,10 +11,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160531020702) do
+ActiveRecord::Schema.define(version: 20160531070838) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "intakes", force: :cascade do |t|
+    t.integer  "user_id"
+    t.time     "logged_time"
+    t.date     "logged_date"
+    t.string   "consumed_item"
+    t.string   "consumed_uom"
+    t.integer  "consumed_qty"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "intakes", ["user_id"], name: "index_intakes_on_user_id", using: :btree
+
+  create_table "proximates", force: :cascade do |t|
+    t.integer  "intake_id"
+    t.integer  "water_g"
+    t.integer  "energy_kcal"
+    t.integer  "protein_g"
+    t.integer  "total_fat_g"
+    t.integer  "carbohydrate_g"
+    t.integer  "total_dietary_fibre_g"
+    t.integer  "total_sugar_g"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  add_index "proximates", ["intake_id"], name: "index_proximates_on_intake_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -36,4 +64,6 @@ ActiveRecord::Schema.define(version: 20160531020702) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "intakes", "users"
+  add_foreign_key "proximates", "intakes"
 end
