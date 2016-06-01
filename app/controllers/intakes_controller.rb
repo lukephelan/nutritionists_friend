@@ -43,6 +43,9 @@ class IntakesController < ApplicationController
     redirect_to intakes_path
   end
 
+  def food_search
+  end
+
   private
     def intake_params
       params.require(:intake).permit(:user_id, :consumed_item, :consumed_uom, :consumed_qty, :logged_time, :logged_date)
