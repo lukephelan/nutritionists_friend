@@ -1,5 +1,7 @@
 class IntakesController < ApplicationController
 
+  skip_before_action :verify_authenticity_token
+
   def index
     @intakes = Intake.all
   end
@@ -10,6 +12,7 @@ class IntakesController < ApplicationController
 
   def new
     @intake = Intake.new
+    @foodname = params[:chosen_food]
   end
 
   def edit
@@ -49,6 +52,7 @@ class IntakesController < ApplicationController
   def result
     @search_result = HTTParty.get "http://api.nal.usda.gov/ndb/search/?format=json&sort=r&offset=0&api_key=8gYd9RFbST30DyUJm7pJ0Q2Rbjsv9fseOAKe2O6K&q=#{params[:q]}"
   end
+
 
   private
     def intake_params

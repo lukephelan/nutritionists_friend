@@ -1,14 +1,19 @@
 <h2>Search Results</h2>
 <h3>Result for <%= params[:q] %></h3>
 
-
 <% if @search_result["errors"] %>
   <p>Sorry, no results to display.</p>
   <% else %>
     <% count = @search_result["list"]["item"].count %>
-    <% for i in 0...count %>
-      <p><%= @search_result["list"]["item"][i]["name"] %></p>
-    <% end %>
+    <form action="/newform" method="post" id="choose-food">
+      <% for i in 0...count %>
+        <input type="radio" name="chosen_food" value="<%= @search_result["list"]["item"][i]["name"] %>">
+        <div class="chosen-food-name"><%= @search_result["list"]["item"][i]["name"] %></div>
+        <div class="hidden-food-id"><% @search_result["list"]["item"][i]["ndbno"] %></div>
+
+      <% end %>
+      <button type="submit" form="choose-food" value="submit">Submit</button>
+    </form>
   <% end %>
 
 <%= link_to 'Back', user_session_path, method: :get %>

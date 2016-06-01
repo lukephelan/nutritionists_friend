@@ -1,5 +1,3 @@
-<%= link_to 'Food Search', '/search', method: :get %>
-
 <%= form_for @intake do |f| %>
 
 <% if @intake.errors.any? %>
@@ -18,12 +16,14 @@
 
   <div class="field">
     <%= f.label :food %><br />
-    <%= f.text_field :consumed_item, autocomplete: "off" %>
+    <%= f.text_field :consumed_item, :readonly => true, :value => @foodname %>
   </div>
+
+<p></p>
 
   <div class="field">
     <%= f.label :unit_of_measure %><br />
-    <%= f.text_field :consumed_uom, autocomplete: "off" %>
+    <%= f.text_field :consumed_uom, autocomplete: "on" %>
   </div>
 
   <div class="field">
