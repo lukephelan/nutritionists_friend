@@ -10,7 +10,12 @@ Rails.application.routes.draw do
   root to: "home#index"
 
 
-  get '/food_search', to: 'intakes#food_search'
+  get '/search' => 'intakes#search'
+
+  post '/result' => 'intakes#result'
+  get '/result' => 'intakes#result'
+  # get 'foods' => 'intakes#foods'
+  # get 'search' => 'intakes#search'
 
 
   # The priority is based upon order of creation: first created -> highest priority.
