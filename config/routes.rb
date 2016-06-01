@@ -16,5 +16,6 @@ Rails.application.routes.draw do
   get '/result' => 'intakes#result'
 
   post '/newform' => 'intakes#new'
+  post '/newform' => 'proximates#new'
 
 end

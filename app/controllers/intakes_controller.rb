@@ -12,11 +12,12 @@ class IntakesController < ApplicationController
 
   def new
     @intake = Intake.new
-    @foodname = params[:chosen_food]
+    @foodname = params[:chosen_food].split('$')[0]
   end
 
   def edit
     @intake = Intake.find(params[:id])
+    @foodname = @intake.consumed_item
   end
 
   def create
