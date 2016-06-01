@@ -1,5 +1,14 @@
 <h2>Search Results</h2>
+<h3>Result for <%= params[:q] %></h3>
 
-<% for i in 0..20 %>
-<p><%= @search_result["list"]["item"][i]["name"] %></p>
-<% end %>
+
+<% if @search_result["errors"] %>
+  <p>Sorry, no results to display.</p>
+  <% else %>
+    <% count = @search_result["list"]["item"].count %>
+    <% for i in 0...count %>
+      <p><%= @search_result["list"]["item"][i]["name"] %></p>
+    <% end %>
+  <% end %>
+
+<%= link_to 'Back', user_session_path, method: :get %>
