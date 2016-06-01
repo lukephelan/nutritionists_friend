@@ -26,6 +26,9 @@
       <td><%= intake.logged_date %></td>
       <td><%= link_to 'Show', intake_path(intake) %></td>
       <td><%= link_to 'Edit', edit_intake_path(intake) %></td>
+      <td><%= link_to 'Destroy', intake_path(intake),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
     </tr>
   <% end %>
 </table>
