@@ -1,6 +1,8 @@
 class Intake < ActiveRecord::Base
   belongs_to :user
+  has_one :proximate, dependent: :destroy
   after_create :fetch_proximates
+
   validates :consumed_item, presence: true
   validates :consumed_uom, presence: true
   validates :consumed_qty, presence: true
@@ -23,4 +25,7 @@ class Intake < ActiveRecord::Base
       @proximate.total_sugar_g = @api_response["report"]["food"]["nutrients"][6]["value"]
       @proximate.save
     end
+
+
+
 end

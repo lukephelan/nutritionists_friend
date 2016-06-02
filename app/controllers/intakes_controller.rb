@@ -19,6 +19,7 @@ class IntakesController < ApplicationController
   def edit
     @intake = Intake.find(params[:id])
     @foodname = @intake.consumed_item
+    @foodndbno = @intake.ndbno
   end
 
   def create
