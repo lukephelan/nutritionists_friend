@@ -3,7 +3,6 @@
 <table>
   <tr>
     <th>Consumed Item</th>
-    <th>Unit of Measure</th>
     <th>Quantity</th>
     <th>Time</th>
     <th>Date</th>
@@ -12,7 +11,6 @@
   <% @intakes.each do |intake| %>
     <tr>
       <td><%= intake.consumed_item %></td>
-      <td><%= intake.consumed_uom %></td>
       <td><%= intake.consumed_qty %></td>
       <td><%= intake.logged_time %></td>
       <td><%= intake.logged_date %></td>

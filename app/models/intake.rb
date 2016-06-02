@@ -4,7 +4,6 @@ class Intake < ActiveRecord::Base
   after_create :fetch_proximates
 
   validates :consumed_item, presence: true
-  validates :consumed_uom, presence: true
   validates :consumed_qty, presence: true
   validates :logged_time, presence: true
   validates :logged_date, presence: true

@@ -60,7 +60,7 @@ class IntakesController < ApplicationController
 
   private
     def intake_params
-      params.require(:intake).permit(:user_id, :consumed_item, :consumed_uom, :consumed_qty, :logged_time, :logged_date, :ndbno)
+      params.require(:intake).permit(:user_id, :consumed_item, :consumed_qty, :logged_time, :logged_date, :ndbno)
     end
 
     # def require_permission
