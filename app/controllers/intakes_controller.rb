@@ -13,6 +13,7 @@ class IntakesController < ApplicationController
   def new
     @intake = Intake.new
     @foodname = params[:chosen_food].split('$')[0]
+    @foodndbno = params[:chosen_food].split('$')[1]
   end
 
   def edit
@@ -23,6 +24,7 @@ class IntakesController < ApplicationController
   def create
     @intake = Intake.new(intake_params)
     @intake.user_id = current_user.id
+
     if @intake.save
         redirect_to @intake
       else
