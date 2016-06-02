@@ -10,7 +10,7 @@ class Intake < ActiveRecord::Base
   private
     def fetch_proximates
       # Fetch the proximates for this intake log - store them in the DB
-      @foodnbdno = '01009'
+      
       @proximate = Proximate.new
       @api_response = HTTParty.get "http://api.nal.usda.gov/ndb/reports/?ndbno=#{@foodnbdno}&type=b&format=json&api_key=8gYd9RFbST30DyUJm7pJ0Q2Rbjsv9fseOAKe2O6K"
       @proximate.intake_id = self.id

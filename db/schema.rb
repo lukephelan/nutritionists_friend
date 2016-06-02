@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160531070838) do
+ActiveRecord::Schema.define(version: 20160602014957) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20160531070838) do
     t.integer  "consumed_qty"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.string   "ndbno"
   end
 
   add_index "intakes", ["user_id"], name: "index_intakes_on_user_id", using: :btree
