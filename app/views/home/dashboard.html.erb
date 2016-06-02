@@ -1,6 +1,10 @@
 <div class="nutrition-graphs">
 
-  <%= pie_chart({"Football" => 10, "Basketball" => 5}) %>
+
+    <!-- <%= pie_chart Proximate.group(:water_g).count %> -->
+
+    <%= pie_chart [["Protein", @protein_consumed], ["Fat", @fat_consumed], ["Carbohydrates", @carbs_consumed]] %>
+
 
 </div>
 
@@ -9,7 +13,5 @@
   <%= link_to 'Add Entry to Log', search_path, method: :get %>
   <%= link_to 'View Log', controller: 'intakes' %>
   <!-- <%= link_to 'Back', user_session_path, method: :get %> -->
-
-
 
 </div>
