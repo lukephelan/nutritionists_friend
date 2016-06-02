@@ -19,11 +19,14 @@
     <%= f.text_field :consumed_item, :readonly => true, :value => @foodname %>
   </div>
 
-<p></p>
+  <div class="hidden-field">
+    <%= f.label :ndbno %><br />
+    <%= f.text_field :ndbno, :readonly => true, :value => @foodndbno %>
+  </div>
 
   <div class="field">
     <%= f.label :unit_of_measure %><br />
-    <%= f.text_field :consumed_uom, autocomplete: "on" %>
+    <%= f.text_field :consumed_uom, autocomplete: "off" %>
   </div>
 
   <div class="field">
