@@ -3,7 +3,7 @@ class IntakesController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
-    @intakes = Intake.all
+    @intakes = Intake.where(user_id:current_user.id)
   end
 
   def show
