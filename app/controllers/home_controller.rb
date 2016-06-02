@@ -5,10 +5,19 @@ class HomeController < ApplicationController
 
     if current_user
 
-      @protein_consumed = Proximate.joins(:intake).where(intakes: {user_id: current_user.id}).where(intakes: {logged_date: Time.zone.now.beginning_of_day}).sum(:protein_g)
+      @protein_consumed = Proximate.joins(:intake)
+        .where(intakes: {user_id: current_user.id})
+        .where(intakes: {logged_date: Date.today})
+        .sum(:protein_g)
       # @protein_consumed = Proximate.where(intake: Time.now.day).sum(:protein_g)
-      @carbs_consumed = Proximate.joins(:intake).where(intakes: {user_id: current_user.id}).where(intakes: {logged_date: Time.zone.now.beginning_of_day}).sum(:carbohydrate_g)
-      @fat_consumed = Proximate.joins(:intake).where(intakes: {user_id: current_user.id}).where(intakes: {logged_date: Time.zone.now.beginning_of_day}).sum(:total_fat_g)
+      @carbs_consumed = Proximate.joins(:intake)
+        .where(intakes: {user_id: current_user.id})
+        .where(intakes: {logged_date: Date.today})
+        .sum(:carbohydrate_g)
+      @fat_consumed = Proximate.joins(:intake)
+        .where(intakes: {user_id: current_user.id})
+        .where(intakes: {logged_date: Date.today})
+        .sum(:total_fat_g)
 
       render :dashboard
     end
