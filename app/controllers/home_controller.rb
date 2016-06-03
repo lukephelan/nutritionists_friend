@@ -9,8 +9,12 @@ class HomeController < ApplicationController
       # join the intakes and proximates tables using the intakes foreign key
       # then sum all the nutrients we want, where the date is equal to today
       # and only for the current user
-      # this can then be added to the pie chart to show what nutrients
+      # this can then be added to the pie/bar chart to show what nutrients
       # have been eaten today
+      @calories_consumed = Proximate.joins(:intake)
+        .where(intakes: {user_id: current_user.id})
+        .where(intakes: {logged_date: Date.today})
+        .sum(:energy_kcal)
       @protein_consumed = Proximate.joins(:intake)
         .where(intakes: {user_id: current_user.id})
         .where(intakes: {logged_date: Date.today})
@@ -38,6 +42,119 @@ class HomeController < ApplicationController
       @fat_over_time = Proximate.joins(:intake)
         .where(intakes: {user_id: current_user.id})
         .select("total_fat_g")
+
+
+      # join the intakes and vitamins tables using the intakes foreign key
+      # then sum all the nutrients we want, where the date is equal to today
+      # and only for the current user
+      # this can then be added to the bar chart to show what nutrients
+      # have been eaten today
+      @vitamin_c_consumed = Vitamin.joins(:intake)
+        .where(intakes: {user_id: current_user.id})
+        .where(intakes: {logged_date: Date.today})
+        .sum(:vitamin_c_mg)
+      @thiamin_consumed = Vitamin.joins(:intake)
+        .where(intakes: {user_id: current_user.id})
+        .where(intakes: {logged_date: Date.today})
+        .sum(:thiamin_mg)
+      @riboflavin_consumed = Vitamin.joins(:intake)
+        .where(intakes: {user_id: current_user.id})
+        .where(intakes: {logged_date: Date.today})
+        .sum(:riboflavin_mg)
+      @niacin_consumed = Vitamin.joins(:intake)
+        .where(intakes: {user_id: current_user.id})
+        .where(intakes: {logged_date: Date.today})
+        .sum(:niacin_mg)
+      @vitamin_b6_consumed = Vitamin.joins(:intake)
+        .where(intakes: {user_id: current_user.id})
+        .where(intakes: {logged_date: Date.today})
+        .sum(:vitamin_b_6_mg)
+      @folate_consumed = Vitamin.joins(:intake)
+        .where(intakes: {user_id: current_user.id})
+        .where(intakes: {logged_date: Date.today})
+        .sum(:folate_dfe_μg)
+      @vitamin_b12_consumed = Vitamin.joins(:intake)
+        .where(intakes: {user_id: current_user.id})
+        .where(intakes: {logged_date: Date.today})
+        .sum(:vitamin_b_12_μg)
+      @vitamin_a_consumed = Vitamin.joins(:intake)
+        .where(intakes: {user_id: current_user.id})
+        .where(intakes: {logged_date: Date.today})
+        .sum(:vitamin_a_rae_μg)
+      @vitamin_e_consumed = Vitamin.joins(:intake)
+        .where(intakes: {user_id: current_user.id})
+        .where(intakes: {logged_date: Date.today})
+        .sum(:vitamin_e_mg)
+      @vitamin_d_consumed = Vitamin.joins(:intake)
+        .where(intakes: {user_id: current_user.id})
+        .where(intakes: {logged_date: Date.today})
+        .sum(:vitamin_d_μg)
+      @vitamin_k_consumed = Vitamin.joins(:intake)
+        .where(intakes: {user_id: current_user.id})
+        .where(intakes: {logged_date: Date.today})
+        .sum(:vitamin_k_μg)
+
+
+      # join the intakes and minerals tables using the intakes foreign key
+      # then sum all the nutrients we want, where the date is equal to today
+      # and only for the current user
+      # this can then be added to the bar chart to show what nutrients
+      # have been eaten today
+      @calcium_consumed = Mineral.joins(:intake)
+        .where(intakes: {user_id: current_user.id})
+        .where(intakes: {logged_date: Date.today})
+        .sum(:calcium_mg)
+      @iron_consumed = Mineral.joins(:intake)
+        .where(intakes: {user_id: current_user.id})
+        .where(intakes: {logged_date: Date.today})
+        .sum(:iron_mg)
+      @magnesium_consumed = Mineral.joins(:intake)
+        .where(intakes: {user_id: current_user.id})
+        .where(intakes: {logged_date: Date.today})
+        .sum(:magnesium_mg)
+      @phosphorus_consumed = Mineral.joins(:intake)
+        .where(intakes: {user_id: current_user.id})
+        .where(intakes: {logged_date: Date.today})
+        .sum(:phosphorus_mg)
+      @potassium_consumed = Mineral.joins(:intake)
+        .where(intakes: {user_id: current_user.id})
+        .where(intakes: {logged_date: Date.today})
+        .sum(:potassium_mg)
+      @sodium_consumed = Mineral.joins(:intake)
+        .where(intakes: {user_id: current_user.id})
+        .where(intakes: {logged_date: Date.today})
+        .sum(:sodium_mg)
+      @zinc_consumed = Mineral.joins(:intake)
+        .where(intakes: {user_id: current_user.id})
+        .where(intakes: {logged_date: Date.today})
+        .sum(:zinc_mg)
+
+
+      # join the intakes and lipids tables using the intakes foreign key
+      # then sum all the nutrients we want, where the date is equal to today
+      # and only for the current user
+      # this can then be added to the bar chart to show what nutrients
+      # have been eaten today
+      @saturated_fat_consumed = Lipid.joins(:intake)
+        .where(intakes: {user_id: current_user.id})
+        .where(intakes: {logged_date: Date.today})
+        .sum(:saturated_fatty_acids_g)
+      @mono_fat_consumed = Lipid.joins(:intake)
+        .where(intakes: {user_id: current_user.id})
+        .where(intakes: {logged_date: Date.today})
+        .sum(:monounsaturated_fatty_acids_g)
+      @poly_fat_consumed = Lipid.joins(:intake)
+        .where(intakes: {user_id: current_user.id})
+        .where(intakes: {logged_date: Date.today})
+        .sum(:polyunsaturated_fatty_acid_g)
+      @trans_fat_consumed = Lipid.joins(:intake)
+        .where(intakes: {user_id: current_user.id})
+        .where(intakes: {logged_date: Date.today})
+        .sum(:trans_fatty_acid_g)
+      @cholesterol_consumed = Lipid.joins(:intake)
+        .where(intakes: {user_id: current_user.id})
+        .where(intakes: {logged_date: Date.today})
+        .sum(:cholesterol_mg)
 
       render :dashboard
     end

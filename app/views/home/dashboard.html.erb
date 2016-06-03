@@ -2,16 +2,60 @@
 
 <div class="todays-graphs">
 
+<h3>Macro Ratio</h3>
+
     <%= pie_chart [
       ["Protein", @protein_consumed],
       ["Fat", @fat_consumed],
       ["Carbohydrates", @carbs_consumed]
     ] %>
+
+<h3>Macro Intake</h3>
+
     <%= column_chart [
-      ["Protein", @protein_consumed],
-      ["Fat", @fat_consumed],
-      ["Carbohydrates", @carbs_consumed]
+      ["Calories (kcal)", @calories_consumed],
+      ["Protein (g)", @protein_consumed],
+      ["Fat (g)", @fat_consumed],
+      ["Carbohydrates (g)", @carbs_consumed]
       ], width: "50%", height: "300px" %>
+
+<h3>Vitamin Intake</h3>
+
+<%= column_chart [
+  ["Vitamin C (mg)", @vitamin_c_consumed],
+  ["Thiamin (mg)", @thiamin_consumed],
+  ["Riboflavin (mg)", @riboflavin_consumed],
+  ["Niacin (mg)", @niacin_consumed],
+  ["Vitamin B6 (mg)", @vitamin_b6_consumed],
+  ["Folate DFE (mg)", @folate_consumed],
+  ["Vitamin B12 (μg)", @vitamin_b12_consumed],
+  ["Vitamin A (μg)", @vitamin_a_consumed],
+  ["Vitamin E (mg)", @vitamin_e_consumed],
+  ["Vitamin D (μg)", @vitamin_d_consumed],
+  ["Vitamin K (μg)", @vitamin_k_consumed],
+  ], width: "50%", height: "300px" %>
+
+<h3>Mineral Intake</h3>
+
+<%= column_chart [
+  ["Calcium (mg)", @calcium_consumed],
+  ["Iron (mg)", @iron_consumed],
+  ["Magnesium (mg)", @magnesium_consumed],
+  ["Phosphorus (mg)", @phosphorus_consumed],
+  ["Potassium (mg)", @potassium_consumed],
+  ["Sodium (mg)", @sodium_consumed],
+  ["Zinc (μg)", @zinc_consumed],
+  ], width: "50%", height: "300px" %>
+
+<h3>Fats Intake</h3>
+
+<%= column_chart [
+  ["Saturated Fatty Acids (g)", @saturated_fat_consumed],
+  ["Monounsaturated Fatty Acids (g)", @mono_fat_consumed],
+  ["Polyunsaturated Fatty Acids (g)", @poly_fat_consumed],
+  ["Trans Fatty Acids (g)", @trans_fat_consumed],
+  ["Cholesterol (mg)", @cholesterol_consumed],
+  ], width: "50%", height: "300px" %>
 
 </div>
 
@@ -20,13 +64,13 @@
 <div class="years-graphs">
 
   <%= line_chart [
-    {name: "Protein", data: @protein_over_time
+    {name: "Protein (g)", data: @protein_over_time
       .group_by_day(:logged_date, range: 7.days.ago.midnight..Time.now,
       format: "%B %d, %Y").sum(:protein_g), width: "50%"},
-    {name: "Carbohydrates", data: @carbs_over_time
+    {name: "Carbohydrates (g)", data: @carbs_over_time
       .group_by_day(:logged_date, range: 7.days.ago.midnight..Time.now,
       format: "%B %d, %Y").sum(:carbohydrate_g), width: "50%"},
-    {name: "Fats", data: @fat_over_time
+    {name: "Fats (g)", data: @fat_over_time
       .group_by_day(:logged_date, range: 7.days.ago.midnight..Time.now,
       format: "%B %d, %Y").sum(:total_fat_g), width: "50%"}
     ] %>
