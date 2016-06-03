@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160603001850) do
+ActiveRecord::Schema.define(version: 20160603003454) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bodyweights", force: :cascade do |t|
+    t.integer  "user_id"
+    t.date     "bodyweight_recorded_date"
+    t.integer  "bodyweight_recorded_kg"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "bodyweights", ["user_id"], name: "index_bodyweights_on_user_id", using: :btree
 
   create_table "intakes", force: :cascade do |t|
     t.integer  "user_id"
@@ -28,6 +38,43 @@ ActiveRecord::Schema.define(version: 20160603001850) do
   end
 
   add_index "intakes", ["user_id"], name: "index_intakes_on_user_id", using: :btree
+
+  create_table "lipids", force: :cascade do |t|
+    t.integer  "intake_id"
+    t.integer  "saturated_fatty_acids_g"
+    t.integer  "monounsaturated_fatty_acids_g"
+    t.integer  "polyunsaturated_fatty_acid_g"
+    t.integer  "trans_fatty_acid_g"
+    t.integer  "cholesterol_mg"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
+
+  add_index "lipids", ["intake_id"], name: "index_lipids_on_intake_id", using: :btree
+
+  create_table "minerals", force: :cascade do |t|
+    t.integer  "intake_id"
+    t.integer  "calcium_mg"
+    t.integer  "iron_mg"
+    t.integer  "magnesium_mg"
+    t.integer  "phosphorus_mg"
+    t.integer  "potassium_mg"
+    t.integer  "sodium_mg"
+    t.integer  "zinc_mg"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "minerals", ["intake_id"], name: "index_minerals_on_intake_id", using: :btree
+
+  create_table "others", force: :cascade do |t|
+    t.integer  "intake_id"
+    t.integer  "caffine_mg"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "others", ["intake_id"], name: "index_others_on_intake_id", using: :btree
 
   create_table "proximates", force: :cascade do |t|
     t.integer  "intake_id"
@@ -64,6 +111,32 @@ ActiveRecord::Schema.define(version: 20160603001850) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  create_table "vitamins", force: :cascade do |t|
+    t.integer  "intake_id"
+    t.integer  "vitamin_c_mg"
+    t.integer  "thiamin_mg"
+    t.integer  "riboflavin_mg"
+    t.integer  "niacin_mg"
+    t.integer  "vitamin_b_6_mg"
+    t.integer  "folate_dfe_μg"
+    t.integer  "vitamin_b_12_μg"
+    t.integer  "vitamin_a_rae_μg"
+    t.integer  "vitamin_a_iu"
+    t.integer  "vitamin_e_mg"
+    t.integer  "vitamin_d_μg"
+    t.integer  "vitamin_d_iu"
+    t.integer  "vitamin_k_μg"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "vitamins", ["intake_id"], name: "index_vitamins_on_intake_id", using: :btree
+
+  add_foreign_key "bodyweights", "users"
   add_foreign_key "intakes", "users"
+  add_foreign_key "lipids", "intakes"
+  add_foreign_key "minerals", "intakes"
+  add_foreign_key "others", "intakes"
   add_foreign_key "proximates", "intakes"
+  add_foreign_key "vitamins", "intakes"
 end
