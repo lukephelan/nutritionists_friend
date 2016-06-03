@@ -5,9 +5,9 @@
 <h3>Macro Ratio</h3>
 
     <%= pie_chart [
-      ["Protein", @protein_consumed],
-      ["Fat", @fat_consumed],
-      ["Carbohydrates", @carbs_consumed]
+      ["Protein (g)", @protein_consumed],
+      ["Fat (g)", @fat_consumed],
+      ["Carbohydrates (g)", @carbs_consumed]
     ] %>
 
 <h3>Macro Intake</h3>
@@ -63,6 +63,8 @@
 
 <div class="years-graphs">
 
+<h3>Macros</h3>
+
   <%= line_chart [
     {name: "Protein (g)", data: @protein_over_time
       .group_by_day(:logged_date, range: 7.days.ago.midnight..Time.now,
@@ -74,6 +76,44 @@
       .group_by_day(:logged_date, range: 7.days.ago.midnight..Time.now,
       format: "%B %d, %Y").sum(:total_fat_g), width: "50%"}
     ] %>
+
+<h3>Vitamins</h3>
+
+<%= line_chart [
+  {name: "Vitamin C (mg)", data: @vitamin_c_over_time
+    .group_by_day(:logged_date, range: 7.days.ago.midnight..Time.now,
+    format: "%B %d, %Y").sum(:vitamin_c_mg), width: "50%"},
+  {name: "Thiamin (mg)", data: @thiamin_over_time
+    .group_by_day(:logged_date, range: 7.days.ago.midnight..Time.now,
+    format: "%B %d, %Y").sum(:thiamin_mg), width: "50%"},
+  {name: "Riboflavin (mg)", data: @riboflavin_over_time
+    .group_by_day(:logged_date, range: 7.days.ago.midnight..Time.now,
+    format: "%B %d, %Y").sum(:riboflavin_mg), width: "50%"},
+  {name: "Niacin (mg)", data: @niacin_over_time
+    .group_by_day(:logged_date, range: 7.days.ago.midnight..Time.now,
+    format: "%B %d, %Y").sum(:niacin_mg), width: "50%"},
+  {name: "Vitamin B6 (mg)", data: @vitamin_b6_over_time
+    .group_by_day(:logged_date, range: 7.days.ago.midnight..Time.now,
+    format: "%B %d, %Y").sum(:vitamin_b_6_mg), width: "50%"},
+  {name: "Folate (μg)", data: @folate_over_time
+    .group_by_day(:logged_date, range: 7.days.ago.midnight..Time.now,
+    format: "%B %d, %Y").sum(:folate_dfe_μg), width: "50%"},
+  {name: "Vitamin B12 (μg)", data: @vitamin_b12_over_time
+    .group_by_day(:logged_date, range: 7.days.ago.midnight..Time.now,
+    format: "%B %d, %Y").sum(:vitamin_b_12_μg), width: "50%"},
+  {name: "Vitamin A (μg)", data: @vitamin_a_over_time
+    .group_by_day(:logged_date, range: 7.days.ago.midnight..Time.now,
+    format: "%B %d, %Y").sum(:vitamin_a_rae_μg), width: "50%"},
+  {name: "Vitamin E (mg)", data: @vitamin_e_over_time
+    .group_by_day(:logged_date, range: 7.days.ago.midnight..Time.now,
+    format: "%B %d, %Y").sum(:vitamin_e_mg), width: "50%"},
+  {name: "Vitamin D (μg)", data: @vitamin_d_over_time
+    .group_by_day(:logged_date, range: 7.days.ago.midnight..Time.now,
+    format: "%B %d, %Y").sum(:vitamin_d_μg), width: "50%"},
+  {name: "Vitamin K (μg)", data: @vitamin_k_over_time
+    .group_by_day(:logged_date, range: 7.days.ago.midnight..Time.now,
+    format: "%B %d, %Y").sum(:vitamin_k_μg), width: "50%"},
+  ] %>
 
 </div>
 

@@ -29,21 +29,6 @@ class HomeController < ApplicationController
         .sum(:total_fat_g)
 
 
-      # join the intakes and proximates tables using the intakes foreign key
-      # and then select all the entries for the nutrient we want
-      # and only for the current user
-      # this can then be used to chart intake over time
-      @protein_over_time = Proximate.joins(:intake)
-        .where(intakes: {user_id: current_user.id})
-        .select("protein_g")
-      @carbs_over_time = Proximate.joins(:intake)
-        .where(intakes: {user_id: current_user.id})
-        .select("carbohydrate_g")
-      @fat_over_time = Proximate.joins(:intake)
-        .where(intakes: {user_id: current_user.id})
-        .select("total_fat_g")
-
-
       # join the intakes and vitamins tables using the intakes foreign key
       # then sum all the nutrients we want, where the date is equal to today
       # and only for the current user
@@ -155,6 +140,57 @@ class HomeController < ApplicationController
         .where(intakes: {user_id: current_user.id})
         .where(intakes: {logged_date: Date.today})
         .sum(:cholesterol_mg)
+
+
+
+      # join the intakes and proximates tables using the intakes foreign key
+      # and then select all the entries for the nutrient we want
+      # and only for the current user
+      # this can then be used to chart intake over time
+      @protein_over_time = Proximate.joins(:intake)
+        .where(intakes: {user_id: current_user.id})
+        .select("protein_g")
+      @carbs_over_time = Proximate.joins(:intake)
+        .where(intakes: {user_id: current_user.id})
+        .select("carbohydrate_g")
+      @fat_over_time = Proximate.joins(:intake)
+        .where(intakes: {user_id: current_user.id})
+        .select("total_fat_g")
+
+
+      @vitamin_c_over_time = Vitamin.joins(:intake)
+        .where(intakes: {user_id: current_user.id})
+        .select("vitamin_c_mg")
+      @thiamin_over_time = Vitamin.joins(:intake)
+        .where(intakes: {user_id: current_user.id})
+        .select("thiamin_mg")
+      @riboflavin_over_time = Vitamin.joins(:intake)
+        .where(intakes: {user_id: current_user.id})
+        .select("riboflavin_mg")
+      @niacin_over_time = Vitamin.joins(:intake)
+        .where(intakes: {user_id: current_user.id})
+        .select("niacin_mg")
+      @vitamin_b6_over_time = Vitamin.joins(:intake)
+        .where(intakes: {user_id: current_user.id})
+        .select("vitamin_b_6_mg")
+      @folate_over_time = Vitamin.joins(:intake)
+        .where(intakes: {user_id: current_user.id})
+        .select("folate_dfe_μg")
+      @vitamin_b12_over_time = Vitamin.joins(:intake)
+        .where(intakes: {user_id: current_user.id})
+        .select("vitamin_b_12_μg")
+      @vitamin_a_over_time = Vitamin.joins(:intake)
+        .where(intakes: {user_id: current_user.id})
+        .select("vitamin_a_rae_μg")
+      @vitamin_e_over_time = Vitamin.joins(:intake)
+        .where(intakes: {user_id: current_user.id})
+        .select("vitamin_e_mg")
+      @vitamin_d_over_time = Vitamin.joins(:intake)
+        .where(intakes: {user_id: current_user.id})
+        .select("vitamin_d_μg")
+      @vitamin_k_over_time = Vitamin.joins(:intake)
+        .where(intakes: {user_id: current_user.id})
+        .select("vitamin_k_μg")
 
       render :dashboard
     end
