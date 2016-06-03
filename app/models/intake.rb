@@ -69,6 +69,7 @@ class Intake < ActiveRecord::Base
       @other = Other.new
       @other.intake_id = self.id
       @other.caffine_mg = (@api_response["report"]["food"]["nutrients"][32]["value"].to_f)*(self.consumed_qty.to_f/100)
+      @other.save
 
     end
 
