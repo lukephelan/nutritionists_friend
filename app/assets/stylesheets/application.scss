@@ -66,3 +66,11 @@ html, body {
 #footer-nav {
   text-align: center;
 }
+
+.hidden-field {
+  display: none;
+}
+
+body.welcome {
+  background-image: image-url('desktop_healthy_food.jpg');
+}
