@@ -18,6 +18,7 @@
 
 html, body {
   height: 100%;
+  background-image: image-url('white_wall_hash/white_wall_hash.png');
 }
 
 .header {
@@ -46,6 +47,11 @@ html, body {
 
 .footer p {
   color: white;
+}
+
+h3 {
+  margin-top: 50px;
+  margin-bottom: 30px;
 }
 
 .container {
