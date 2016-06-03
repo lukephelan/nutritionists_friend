@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  intake_id: 
+  vitamin_c_mg: 1
+  thiamin_mg: 1
+  riboflavin_mg: 1
+  niacin_mg: 1
+  vitamin_b-6_mg: 1
+  folate_dfe_μg: 1
+  vitamin_b-12_μg: 1
+  vitamin_a_rae_μg: 1
+  vitamin_a_iu: 1
+  vitamin_e_mg: 1
+  vitamin_d_μg: 1
+  vitamin_d_iu: 1
+  vitamin_k_μg: 1
+
+two:
+  intake_id: 
+  vitamin_c_mg: 1
+  thiamin_mg: 1
+  riboflavin_mg: 1
+  niacin_mg: 1
+  vitamin_b-6_mg: 1
+  folate_dfe_μg: 1
+  vitamin_b-12_μg: 1
+  vitamin_a_rae_μg: 1
+  vitamin_a_iu: 1
+  vitamin_e_mg: 1
+  vitamin_d_μg: 1
+  vitamin_d_iu: 1
+  vitamin_k_μg: 1

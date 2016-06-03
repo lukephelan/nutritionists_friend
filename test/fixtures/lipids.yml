@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  intake_id: 
+  saturated_fatty_acids_g: 1
+  monounsaturated_fatty_acids_g: 1
+  polyunsaturated_fatty_acid_g: 1
+  trans_fatty_acid_g: 1
+  cholesterol_mg: 1
+
+two:
+  intake_id: 
+  saturated_fatty_acids_g: 1
+  monounsaturated_fatty_acids_g: 1
+  polyunsaturated_fatty_acid_g: 1
+  trans_fatty_acid_g: 1
+  cholesterol_mg: 1

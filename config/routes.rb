@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  resources :bodyweights
+  resources :others
+  resources :lipids
+  resources :vitamins
+  resources :minerals
   resources :proximates
   resources :intakes
   get 'home/index'

@@ -1,0 +1,2 @@
+class MineralsController < ApplicationController
+end
