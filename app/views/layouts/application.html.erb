@@ -9,9 +9,9 @@
 </head>
 <body>
 
-  <header>
+  <div class="header">
     <h1>Nutritionist's Friend</h1>
-  </header>
+  </div>
 
   <div class="navigation">
   <% if current_user %>
@@ -24,12 +24,14 @@
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
 
+<div class="container">
 <%= yield %>
+</div>
 
-  <footer>
+  <div class="footer">
     <p>This site uses the <a href="https://ndb.nal.usda.gov/ndb/api/doc">
       USDA National Nutrient Database API</a></p>
-  </footer>
+  </div>
 
 </body>
 </html>

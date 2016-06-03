@@ -7,10 +7,13 @@
     <% count = @search_result["list"]["item"].count %>
     <form action="/newform" method="post" id="choose-food">
       <% for i in 0...count %>
+      <div class="radio">
+        <label>
         <input type="radio" name="chosen_food" value="<%=@search_result["list"]["item"][i]["name"]%>$<%= @search_result["list"]["item"][i]["ndbno"] %>">
         <%= @search_result["list"]["item"][i]["name"] %>
         <% @search_result["list"]["item"][i]["ndbno"] %><br>
-
+      </label>
+    </div>
       <% end %>
       <button type="submit" form="choose-food" value="submit">Submit</button>
     </form>
