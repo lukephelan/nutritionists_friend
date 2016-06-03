@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160602042530) do
+ActiveRecord::Schema.define(version: 20160603001429) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,21 @@ ActiveRecord::Schema.define(version: 20160602042530) do
   end
 
   add_index "intakes", ["user_id"], name: "index_intakes_on_user_id", using: :btree
+
+  create_table "minerals", force: :cascade do |t|
+    t.integer  "intake_id"
+    t.integer  "calcium_mg"
+    t.integer  "iron_mg"
+    t.integer  "magnesium_mg"
+    t.integer  "phosphorus_mg"
+    t.integer  "potassium_mg"
+    t.integer  "sodium_mg"
+    t.integer  "zinc_mg"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "minerals", ["intake_id"], name: "index_minerals_on_intake_id", using: :btree
 
   create_table "proximates", force: :cascade do |t|
     t.integer  "intake_id"
@@ -65,5 +80,6 @@ ActiveRecord::Schema.define(version: 20160602042530) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "intakes", "users"
+  add_foreign_key "minerals", "intakes"
   add_foreign_key "proximates", "intakes"
 end
