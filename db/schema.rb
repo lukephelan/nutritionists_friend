@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160603003454) do
+ActiveRecord::Schema.define(version: 20160603005832) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,11 +41,11 @@ ActiveRecord::Schema.define(version: 20160603003454) do
 
   create_table "lipids", force: :cascade do |t|
     t.integer  "intake_id"
-    t.integer  "saturated_fatty_acids_g"
-    t.integer  "monounsaturated_fatty_acids_g"
-    t.integer  "polyunsaturated_fatty_acid_g"
-    t.integer  "trans_fatty_acid_g"
-    t.integer  "cholesterol_mg"
+    t.decimal  "saturated_fatty_acids_g"
+    t.decimal  "monounsaturated_fatty_acids_g"
+    t.decimal  "polyunsaturated_fatty_acid_g"
+    t.decimal  "trans_fatty_acid_g"
+    t.decimal  "cholesterol_mg"
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
   end
@@ -54,13 +54,13 @@ ActiveRecord::Schema.define(version: 20160603003454) do
 
   create_table "minerals", force: :cascade do |t|
     t.integer  "intake_id"
-    t.integer  "calcium_mg"
-    t.integer  "iron_mg"
-    t.integer  "magnesium_mg"
-    t.integer  "phosphorus_mg"
-    t.integer  "potassium_mg"
-    t.integer  "sodium_mg"
-    t.integer  "zinc_mg"
+    t.decimal  "calcium_mg"
+    t.decimal  "iron_mg"
+    t.decimal  "magnesium_mg"
+    t.decimal  "phosphorus_mg"
+    t.decimal  "potassium_mg"
+    t.decimal  "sodium_mg"
+    t.decimal  "zinc_mg"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end
@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 20160603003454) do
 
   create_table "others", force: :cascade do |t|
     t.integer  "intake_id"
-    t.integer  "caffine_mg"
+    t.decimal  "caffine_mg"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -78,13 +78,13 @@ ActiveRecord::Schema.define(version: 20160603003454) do
 
   create_table "proximates", force: :cascade do |t|
     t.integer  "intake_id"
-    t.integer  "water_g"
-    t.integer  "energy_kcal"
-    t.integer  "protein_g"
-    t.integer  "total_fat_g"
-    t.integer  "carbohydrate_g"
-    t.integer  "total_dietary_fibre_g"
-    t.integer  "total_sugar_g"
+    t.decimal  "water_g"
+    t.decimal  "energy_kcal"
+    t.decimal  "protein_g"
+    t.decimal  "total_fat_g"
+    t.decimal  "carbohydrate_g"
+    t.decimal  "total_dietary_fibre_g"
+    t.decimal  "total_sugar_g"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
   end
@@ -113,19 +113,19 @@ ActiveRecord::Schema.define(version: 20160603003454) do
 
   create_table "vitamins", force: :cascade do |t|
     t.integer  "intake_id"
-    t.integer  "vitamin_c_mg"
-    t.integer  "thiamin_mg"
-    t.integer  "riboflavin_mg"
-    t.integer  "niacin_mg"
-    t.integer  "vitamin_b_6_mg"
-    t.integer  "folate_dfe_μg"
-    t.integer  "vitamin_b_12_μg"
-    t.integer  "vitamin_a_rae_μg"
-    t.integer  "vitamin_a_iu"
-    t.integer  "vitamin_e_mg"
-    t.integer  "vitamin_d_μg"
-    t.integer  "vitamin_d_iu"
-    t.integer  "vitamin_k_μg"
+    t.decimal  "vitamin_c_mg"
+    t.decimal  "thiamin_mg"
+    t.decimal  "riboflavin_mg"
+    t.decimal  "niacin_mg"
+    t.decimal  "vitamin_b_6_mg"
+    t.decimal  "folate_dfe_μg"
+    t.decimal  "vitamin_b_12_μg"
+    t.decimal  "vitamin_a_rae_μg"
+    t.decimal  "vitamin_a_iu"
+    t.decimal  "vitamin_e_mg"
+    t.decimal  "vitamin_d_μg"
+    t.decimal  "vitamin_d_iu"
+    t.decimal  "vitamin_k_μg"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
   end
