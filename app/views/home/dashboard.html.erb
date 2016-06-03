@@ -1,10 +1,35 @@
-<div class="nutrition-graphs">
+<h2>Today's Intake</h2>
 
+<div class="todays-graphs">
 
-    <!-- <%= pie_chart Proximate.group(:water_g).count %> -->
+    <%= pie_chart [
+      ["Protein", @protein_consumed],
+      ["Fat", @fat_consumed],
+      ["Carbohydrates", @carbs_consumed]
+    ] %>
+    <%= column_chart [
+      ["Protein", @protein_consumed],
+      ["Fat", @fat_consumed],
+      ["Carbohydrates", @carbs_consumed]
+      ], width: "50%", height: "300px" %>
 
-    <%= pie_chart [["Protein", @protein_consumed], ["Fat", @fat_consumed], ["Carbohydrates", @carbs_consumed]] %>
+</div>
 
+<h2>Recent Intake</h2>
+
+<div class="years-graphs">
+
+  <%= line_chart [
+    {name: "Protein", data: @protein_over_time
+      .group_by_day(:logged_date, range: 7.days.ago.midnight..Time.now,
+      format: "%B %d, %Y").sum(:protein_g), width: "50%"},
+    {name: "Carbohydrates", data: @carbs_over_time
+      .group_by_day(:logged_date, range: 7.days.ago.midnight..Time.now,
+      format: "%B %d, %Y").sum(:carbohydrate_g), width: "50%"},
+    {name: "Fats", data: @fat_over_time
+      .group_by_day(:logged_date, range: 7.days.ago.midnight..Time.now,
+      format: "%B %d, %Y").sum(:total_fat_g), width: "50%"}
+    ] %>
 
 </div>
 
