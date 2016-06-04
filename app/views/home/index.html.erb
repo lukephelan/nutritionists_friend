@@ -1,6 +1,9 @@
 
 <div class="sign-in">
 <body class="welcome">
-<h2><%= link_to 'Sign In', new_user_session_path, method: :create %></h2>
+  <div class="sign-in-up">
+<h2><%= link_to 'Sign In', new_user_session_path, method: :create %> |
+<%= link_to "Sign Up", new_user_registration_path, method: :get %></h2>
+</div>
 </body>
 </div>
