@@ -1,6 +1,6 @@
-<h2>Search Results</h2>
-<h3>Result for <%= params[:q] %></h3>
+<h3>Results for "<%= params[:q] %>"</h3>
 
+<div class="search-results">
 <% if @search_result["errors"] %>
   <p>Sorry, no results to display.</p>
   <% else %>
@@ -20,3 +20,4 @@
   <% end %>
 
 <%= link_to 'Back', search_path, method: :get %>
+</div>

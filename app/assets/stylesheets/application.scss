@@ -40,17 +40,25 @@ html, body {
 
 .footer {
   width: 100%;
-  height: 100px;
+  height: 50px;
   background-color: rgba(  0, 27, 29,1);
   text-align: center;
   margin-top: 75px;
   margin-bottom: 0;
-  position: absolute;
-  position-bottom: 0px;
+  position: fixed;
+  bottom: 0px;
+  display: table;
 }
 
-.footer p {
+
+
+.footer ul {
   color: white;
+  display: table-cell;
+  vertical-align: middle;
+  font-size: 10px;
+  display: block;
+  margin: 0;
 }
 
 h3 {
@@ -73,6 +81,7 @@ h2 {
 
 .dashboard-container {
   text-align: center;
+  margin-bottom: 150px;
 }
 
 .macro-column-today {
@@ -89,7 +98,10 @@ h2 {
 
 body.welcome {
   background-image: image-url('desktop_healthy_food.jpg');
-  margin-top: 50px;
+}
+
+.sign-in {
+  margin-top: 100px;
 }
 
 #intake_consumed_item {
@@ -115,4 +127,17 @@ input {
 
 input#q {
   width: 100%;
+}
+
+.search-results {
+  margin-bottom: 150px;
+}
+
+.intake-log {
+  margin-bottom: 150px;
+}
+
+button {
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
