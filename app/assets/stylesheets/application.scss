@@ -43,6 +43,10 @@ html, body {
   height: 100px;
   background-color: rgba(  0, 27, 29,1);
   text-align: center;
+  margin-top: 75px;
+  margin-bottom: 0;
+  position: absolute;
+  position-bottom: 0px;
 }
 
 .footer p {
@@ -50,7 +54,12 @@ html, body {
 }
 
 h3 {
-  margin-top: 50px;
+  margin-top: 80px;
+  margin-bottom: 30px;
+}
+
+h2 {
+  margin-top: 80px;
   margin-bottom: 30px;
 }
 
@@ -81,4 +90,29 @@ h3 {
 body.welcome {
   background-image: image-url('desktop_healthy_food.jpg');
   margin-top: 50px;
+}
+
+#intake_consumed_item {
+  width: 500px;
+}
+
+#intake_consumed_qty {
+  width: 150px;
+}
+
+#intake_logged_time {
+  width: 150px;
+}
+
+#intake_logged_date {
+  width: 150px;
+}
+
+input {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+input#q {
+  width: 100%;
 }
