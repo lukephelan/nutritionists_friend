@@ -2,8 +2,8 @@
 
 ## Overview
 
-This web application is for logging food intake and tracking nutrients. In
-addition, the application allows for logging and tracking bodyweight.
+This web application is for logging food intake and tracking nutrients. this
+application also allows for logging and tracking bodyweight.
 
 ### Technology Used
 
@@ -22,7 +22,7 @@ used:
 #### API's
 
 The primary API used for this application comes from the United States
-Department of Agriculture, and is their National Nutrient Database
+Department of Agriculture, and is their National Nutrient Database.
 
 The Google Chart API is handled by the 'chartkick' gem.
 
@@ -32,7 +32,7 @@ The Google Chart API is handled by the 'chartkick' gem.
 
 ### Challenges
 
-1. Using Devise with ann existing Resource
+1. Using Devise with an existing Resource
 
 
 
@@ -53,7 +53,7 @@ selection
 
 
 
-6. Deleting intakes when there is a depending entry in a second table
+6. Deleting intakes when there is a dependant entry in a second table
 
 
 
@@ -62,11 +62,12 @@ selection
 ### Work for the Future
 
 1. Custom food entries
-2. Log-in for the administration to set goals for users
+2. Log-in for the admin (Nutritionist) to set goals for users
 3. Selector on the Dashboard to view charts of interest only
 4. Slider to change date range for historical data
 5. Profile pictures for users
 6. A personal blog for users to interact with their Nutritionist, who in turn,
-can make comments to their blog.
+can make comments to their blog
 7. Pagination on the search results and the log table
-8.
+8. Fix the daily chart for calories as it displays very small fractions
+when nothing has been logged

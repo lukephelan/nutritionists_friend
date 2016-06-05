@@ -8,6 +8,11 @@ class IntakesController < ApplicationController
 
   def show
     @intake = Intake.find(params[:id])
+    @proximate = Proximate.find_by_intake_id(params[:id])
+    @vitamin = Vitamin.find_by_intake_id(params[:id])
+    @mineral = Mineral.find_by_intake_id(params[:id])
+    @lipid = Lipid.find_by_intake_id(params[:id])
+    @other = Other.find_by_intake_id(params[:id])
   end
 
   def new

@@ -4,7 +4,7 @@
 <table class="table table-striped">
   <tr>
     <th>Consumed Item</th>
-    <th>Quantity</th>
+    <th>Quantity (g)</th>
     <th>Time</th>
     <th>Date</th>
   </tr>
@@ -13,8 +13,8 @@
     <tr>
       <td><%= intake.consumed_item %></td>
       <td><%= intake.consumed_qty %></td>
-      <td><%= intake.logged_time.strftime("%l:%M %P") %></td>
-      <td><%= intake.logged_date %></td>
+      <td><%= intake.logged_time.strftime("%l:%M%P") %></td>
+      <td><%= intake.logged_date.strftime("%d/%m/%Y") %></td>
       <td><%= link_to 'Show', intake_path(intake) %></td>
       <td><%= link_to 'Edit', edit_intake_path(intake) %></td>
       <td><%= link_to 'Delete', intake_path(intake),

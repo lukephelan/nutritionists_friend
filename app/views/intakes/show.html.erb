@@ -1,22 +1,183 @@
+<div class="show-nutrients">
+
 <p>
-  <strong>Item Consumed:</strong>
+  <strong>Item:</strong>
   <%= @intake.consumed_item %>
 </p>
 
 <p>
-  <strong>Quantity Consumed:</strong>
+  <strong>Quantity (g):</strong>
   <%= @intake.consumed_qty %>
 </p>
 
 <p>
-  <strong>Time/Date Consumed:</strong>
-  <%= @intake.logged_time %> <%= @intake.logged_date %>
+  <strong>Time/Date:</strong>
+  <%= @intake.logged_time.strftime("%l:%M %P") %> | <%= @intake.logged_date.strftime("%d/%m/%Y") %>
 </p>
+
+<p>
+  <strong>Water (g):</strong>
+  <%= @proximate.water_g %>
+</p>
+
+<p>
+  <strong>Energy (kcal):</strong>
+  <%= @proximate.energy_kcal %>
+</p>
+
+<p>
+  <strong>Protein (g):</strong>
+  <%= @proximate.protein_g %>
+</p>
+
+<p>
+  <strong>Total Fat (g):</strong>
+  <%= @proximate.total_fat_g %>
+</p>
+
+<p>
+  <strong>Carbohydrates (g):</strong>
+  <%= @proximate.carbohydrate_g %>
+</p>
+
+<p>
+  <strong>Total Dietary Fibre (g):</strong>
+  <%= @proximate.carbohydrate_g %>
+</p>
+
+<p>
+  <strong>Total Sugar (g):</strong>
+  <%= @proximate.total_sugar_g %>
+</p>
+
+<p>
+  <strong>Vitamin C (mg):</strong>
+  <%= @vitamin.vitamin_c_mg %>
+</p>
+
+<p>
+  <strong>Thiamin (mg):</strong>
+  <%= @vitamin.thiamin_mg %>
+</p>
+
+<p>
+  <strong>Riboflavin (mg):</strong>
+  <%= @vitamin.riboflavin_mg %>
+</p>
+
+<p>
+  <strong>Niacin (mg):</strong>
+  <%= @vitamin.niacin_mg %>
+</p>
+
+<p>
+  <strong>Vitamin B6 (mg):</strong>
+  <%= @vitamin.vitamin_b_6_mg %>
+</p>
+
+<p>
+  <strong>Folate DFE (μg):</strong>
+  <%= @vitamin.folate_dfe_μg %>
+</p>
+
+<p>
+  <strong>Vitamin B12 (μg):</strong>
+  <%= @vitamin.vitamin_b_12_μg %>
+</p>
+
+<p>
+  <strong>Vitamin A RAE (μg):</strong>
+  <%= @vitamin.vitamin_b_12_μg %>
+</p>
+
+<p>
+  <strong>Vitamin E (mg):</strong>
+  <%= @vitamin.vitamin_e_mg %>
+</p>
+
+<p>
+  <strong>Vitamin D (mg):</strong>
+  <%= @vitamin.vitamin_d_μg %>
+</p>
+
+<p>
+  <strong>Vitamin K (μg):</strong>
+  <%= @vitamin.vitamin_k_μg %>
+</p>
+
+<p>
+  <strong>Calcium (mg):</strong>
+  <%= @mineral.calcium_mg %>
+</p>
+
+<p>
+  <strong>Iron (mg):</strong>
+  <%= @mineral.iron_mg %>
+</p>
+
+<p>
+  <strong>Magnesium (mg):</strong>
+  <%= @mineral.magnesium_mg %>
+</p>
+
+<p>
+  <strong>Phosphorus (mg):</strong>
+  <%= @mineral.phosphorus_mg %>
+</p>
+
+<p>
+  <strong>Potassium (mg):</strong>
+  <%= @mineral.potassium_mg %>
+</p>
+
+<p>
+  <strong>Sodium (mg):</strong>
+  <%= @mineral.sodium_mg %>
+</p>
+
+<p>
+  <strong>Zinc (mg):</strong>
+  <%= @mineral.zinc_mg %>
+</p>
+
+<p>
+  <strong>Saturated Fatty Acids (g):</strong>
+  <%= @lipid.saturated_fatty_acids_g %>
+</p>
+
+<p>
+  <strong>Monounsaturated Fatty Acids (g):</strong>
+  <%= @lipid.monounsaturated_fatty_acids_g %>
+</p>
+
+<p>
+  <strong>Polyunsaturated Fatty Acids (g):</strong>
+  <%= @lipid.polyunsaturated_fatty_acid_g %>
+</p>
+
+<p>
+  <strong>Trans Fatty Acids (g):</strong>
+  <%= @lipid.trans_fatty_acid_g %>
+</p>
+
+<p>
+  <strong>Cholesterol (mg):</strong>
+  <%= @lipid.cholesterol_mg %>
+</p>
+
+<p>
+  <strong>Caffeine (mg):</strong>
+  <%= @other.caffine_mg %>
+</p>
+
+
 
 <div class="direct-to-log">
 
   <%= link_to "Add", search_path, method: :get %> |
   <%= link_to 'Edit', edit_intake_path(@intake) %> |
   <%= link_to 'Back', intakes_path, method: :get %>
+
+</div>
 
 </div>
