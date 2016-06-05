@@ -1,28 +1,72 @@
-== README
+== Nutritionist's Friend
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Overview
 
-Things you may want to cover:
+This web application is for logging food intake and tracking nutrients. In
+addition, the application allows for logging and tracking bodyweight.
 
-* Ruby version
+## Technology Used
 
-* System dependencies
+### Gems
 
-* Configuration
+As well as the default Gems used in Rails 4.2.6, the following Gems have been
+used:
 
-* Database creation
+1. 'devise' - for handling user accounts and sessions
+2. 'httparty' - to access external API's
+3. 'pg' - for PostgreSQL
+4. 'chartkick' - to access and utilise the Google Chart API
+5. 'groupdate' - groups data in a date range for the 'chartkick' gem
+5. 'bootstrap-sass' - to aid with the CSS
 
-* Database initialization
+### API's
 
-* How to run the test suite
+The primary API used for this application comes from the United States
+Department of Agriculture, and is their National Nutrient Database
 
-* Services (job queues, cache servers, search engines, etc.)
+The Google Chart API is handled by the 'chartkick' gem.
 
-* Deployment instructions
+## Database Creation
 
-* ...
+## Database Initialisation
+
+## Challenges
+
+1. Using Devise with ann existing Resource
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+
+2. Adding more fields to the Devise User model
+
+
+
+3. Retrieving both the food database number and the food name from one radio
+selection
+
+
+
+4. Saving to a second table when adding to a first table (fixed with callback)
+
+
+
+5. Retrieving the nutrients from the API when the array indices change
+
+
+
+6. Deleting intakes when there is a depending entry in a second table
+
+
+
+7. Selecting data for the charts
+
+## Work for the Future
+
+1. Custom food entries
+2. Log-in for the administration to set goals for users
+3. Selector on the Dashboard to view charts of interest only
+4. Slider to change date range for historical data
+5. Profile pictures for users
+6. A personal blog for users to interact with their Nutritionist, who in turn,
+can make comments to their blog.
+7. Pagination on the search results and the log table
+8. 

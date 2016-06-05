@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem "chartkick"
 gem 'groupdate'
-gem 'active_median'
+# gem 'active_median'
 
 gem 'httparty'
 
