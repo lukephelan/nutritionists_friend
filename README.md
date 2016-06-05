@@ -1,13 +1,13 @@
-== Nutritionist's Friend
+# Nutritionist's Friend
 
-# Overview
+## Overview
 
 This web application is for logging food intake and tracking nutrients. In
 addition, the application allows for logging and tracking bodyweight.
 
-## Technology Used
+### Technology Used
 
-### Gems
+#### Gems
 
 As well as the default Gems used in Rails 4.2.6, the following Gems have been
 used:
@@ -19,18 +19,18 @@ used:
 5. 'groupdate' - groups data in a date range for the 'chartkick' gem
 5. 'bootstrap-sass' - to aid with the CSS
 
-### API's
+#### API's
 
 The primary API used for this application comes from the United States
 Department of Agriculture, and is their National Nutrient Database
 
 The Google Chart API is handled by the 'chartkick' gem.
 
-## Database Creation
+### Database Creation
 
-## Database Initialisation
+### Database Initialisation
 
-## Challenges
+### Challenges
 
 1. Using Devise with ann existing Resource
 
@@ -59,7 +59,7 @@ selection
 
 7. Selecting data for the charts
 
-## Work for the Future
+### Work for the Future
 
 1. Custom food entries
 2. Log-in for the administration to set goals for users
@@ -69,4 +69,4 @@ selection
 6. A personal blog for users to interact with their Nutritionist, who in turn,
 can make comments to their blog.
 7. Pagination on the search results and the log table
-8. 
+8.
