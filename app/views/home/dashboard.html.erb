@@ -1,27 +1,34 @@
 <div class="dashboard-container">
 
-<h2>Today's Intake</h2>
+<h2><%= Date.today.strftime("%A, %B %e") %></h2>
+
+<h3>Bodyweight</h3>
+
+  <%= line_chart [
+    {name: "Bodyweight (kg)", data: @bodyweight_over_time
+    .group_by_day(:bodyweight_recorded_date, range: 31.days.ago.midnight..Time.now,
+    format: "%B %d, %Y", series: false).sum(:bodyweight_recorded_kg)}
+  ] %>
 
 <h3>Macros</h3>
 
-    <%= pie_chart [
-      ["Protein (g)", @protein_consumed],
-      ["Fat (g)", @fat_consumed],
-      ["Carbohydrates (g)", @carbs_consumed]
-    ] %>
+  <%= pie_chart [
+    ["Protein (g)", @protein_consumed],
+    ["Fat (g)", @fat_consumed],
+    ["Carbohydrates (g)", @carbs_consumed]
+  ] %>
 
-    <%= column_chart [
-
-      ["Protein (g)", @protein_consumed],
-      ["Fat (g)", @fat_consumed],
-      ["Carbohydrates (g)", @carbs_consumed]
-      ], height: "300px", colors: ["#3366CC"] %>
+  <%= column_chart [
+    ["Protein (g)", @protein_consumed],
+    ["Fat (g)", @fat_consumed],
+    ["Carbohydrates (g)", @carbs_consumed]
+    ], height: "300px", colors: ["#3366CC"] %>
 
 <h3>Calories</h3>
 
-    <%= bar_chart [
-      ["Calories (kcal)", @calories_consumed]
-    ], height: "100px", colors: ["#FF9900"] %>
+  <%= bar_chart [
+    ["Calories (kcal)", @calories_consumed]
+  ], height: "100px", colors: ["#FF9900"] %>
 
 <h3>Vitamins</h3>
 

@@ -1,0 +1,22 @@
+<h1>Bodyweight log</h1>
+
+<div class="intake-log">
+<table class="table table-striped">
+  <tr>
+    <th>Date</th>
+    <th>Bodyweight (kg)</th>
+  </tr>
+
+  <% @bodyweights.each do |bodyweight| %>
+    <tr>
+      <td><%= bodyweight.bodyweight_recorded_date.strftime("%d/%m/%Y") %></td>
+      <td><%= bodyweight.bodyweight_recorded_kg %></td>
+      <td><%= link_to 'Show', bodyweight_path(bodyweight) %></td>
+      <td><%= link_to 'Edit', edit_bodyweight_path(bodyweight) %></td>
+      <td><%= link_to 'Delete', bodyweight_path(bodyweight),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
+</div>

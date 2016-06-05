@@ -6,6 +6,11 @@ class HomeController < ApplicationController
     # otherwise, the index view will be displayed for them to log in
     if current_user
 
+      @bodyweight_over_time = Bodyweight.where(user_id: current_user.id)
+      .where("bodyweight_recorded_kg > ?", 0)
+      .select("bodyweight_recorded_kg")
+
+
       # join the intakes and proximates tables using the intakes foreign key
       # then sum all the nutrients we want, where the date is equal to today
       # and only for the current user

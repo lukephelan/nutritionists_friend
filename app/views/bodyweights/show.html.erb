@@ -1,0 +1,23 @@
+<div class="show-nutrients">
+
+  <div class="direct-to-log">
+
+    <%= link_to "Add", new_bodyweight_path, method: :get %> |
+    <%= link_to 'Edit', edit_bodyweight_path(@bodyweight) %> |
+    <%= link_to 'Back', bodyweights_path, method: :get %><br /><br />
+
+  </div>
+
+<p>
+  <strong>Date:</strong>
+  <%= @bodyweight.bodyweight_recorded_date %>
+</p>
+
+<p>
+  <strong>Bodyweight (kg):</strong>
+  <%= @bodyweight.bodyweight_recorded_kg %>
+</p>
+
+
+
+</div>

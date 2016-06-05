@@ -19,8 +19,10 @@
     <p class="navbar-text"><%= current_user.first_name + " " + current_user.last_name %></p>
     <p class="navbar-text"><%= link_to 'Home', home_index_path, method: :get %></p>
     <p class="navbar-text"><%= link_to 'Edit Details', edit_user_registration_path, method: :get %></p>
-    <p class="navbar-text"><%= link_to 'View Log', controller: 'intakes' %></p>
-    <p class="navbar-text"><%= link_to 'Add Entry to Log', search_path, method: :get %></p>
+    <p class="navbar-text"><%= link_to 'Food Log', controller: 'intakes' %></p>
+    <p class="navbar-text"><%= link_to 'Add Food', search_path, method: :get %></p>
+    <p class="navbar-text"><%= link_to 'Bodyweight Log', bodyweights_path, method: :get %></p>
+    <p class="navbar-text"><%= link_to 'Add Bodyweight Record', new_bodyweight_path, method: :get %></p>
     <p class="navbar-text"><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></p>
 </nav>
   <% end %>

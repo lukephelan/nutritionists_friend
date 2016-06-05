@@ -1,5 +1,14 @@
 <div class="show-nutrients">
 
+  <div class="direct-to-log">
+
+    <%= link_to "Add", search_path, method: :get %> |
+    <%= link_to 'Edit', edit_intake_path(@intake) %> |
+    <%= link_to 'Back', intakes_path, method: :get %><br /><br />
+    
+
+  </div>
+
 <p>
   <strong>Item:</strong>
   <%= @intake.consumed_item %>
@@ -169,15 +178,5 @@
   <strong>Caffeine (mg):</strong>
   <%= @other.caffine_mg %>
 </p>
-
-
-
-<div class="direct-to-log">
-
-  <%= link_to "Add", search_path, method: :get %> |
-  <%= link_to 'Edit', edit_intake_path(@intake) %> |
-  <%= link_to 'Back', intakes_path, method: :get %>
-
-</div>
 
 </div>
