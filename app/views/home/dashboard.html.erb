@@ -4,7 +4,7 @@
 
 <h3>Bodyweight</h3>
 
-  <%= line_chart [
+  <%= area_chart [
     {name: "Bodyweight (kg)", data: @bodyweight_over_time
     .group_by_day(:bodyweight_recorded_date, range: 31.days.ago.midnight..Time.now,
     format: "%B %d, %Y", series: false).sum(:bodyweight_recorded_kg)}

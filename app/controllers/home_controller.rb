@@ -7,7 +7,6 @@ class HomeController < ApplicationController
     if current_user
 
       @bodyweight_over_time = Bodyweight.where(user_id: current_user.id)
-      .where("bodyweight_recorded_kg > ?", 0)
       .select("bodyweight_recorded_kg")
 
 

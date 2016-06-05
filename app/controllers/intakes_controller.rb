@@ -68,10 +68,4 @@ class IntakesController < ApplicationController
       params.require(:intake).permit(:user_id, :consumed_item, :consumed_qty, :logged_time, :logged_date, :ndbno)
     end
 
-    # def require_permission
-    #   if current_user != Intake.find(params[:id]).user
-    #     redirect_to '/intakes'
-    #   end
-    # end
-
 end
