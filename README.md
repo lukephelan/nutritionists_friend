@@ -59,12 +59,13 @@ The Google Chart API is handled by the 'chartkick' gem.
   oneth element of the array is stored as the food database number in the Intakes
   Controller:
 
-`  def new
+```ruby
+  def new
     @intake = Intake.new
     @foodname = params[:chosen_food].split('$')[0]
     @foodndbno = params[:chosen_food].split('$')[1]
-    end
-`
+  end
+```
 
 **3. Adding records to multiple tables at the same time**
 
@@ -135,11 +136,13 @@ end`
 
   This is then presented on the Dashboard page as follows:
 
-`<%= line_chart [
+```ruby
+  <%= line_chart [
   {name: "Vitamin C (mg)", data: @vitamin_c_over_time
-    .group_by_day(:logged_date, range: 7.days.ago.midnight..Time.now,
-    format: "%B %d, %Y").sum(:vitamin_c_mg), width: "50%"}
-  ] %>`
+  .group_by_day(:logged_date, range: 7.days.ago.midnight..Time.now,
+  format: "%B %d, %Y").sum(:vitamin_c_mg), width: "50%"}
+  ] %>
+```
 
   This snippet shows one vitamin as a hash within an array. In the actual
   Dashboard code each nutrient is included as another element in the array (too
@@ -147,19 +150,23 @@ end`
 
   An example of code in the Home Controller for displaying a single day of data:
 
-`@protein_consumed = Proximate.joins(:intake)
+```ruby
+  @protein_consumed = Proximate.joins(:intake)
   .where(intakes: {user_id: current_user.id})
   .where(intakes: {logged_date: Date.today})
-  .sum(:protein_g)`
+  .sum(:protein_g)
+```
 
   The code is the same for each nutrient in the Proximates table that you want to
   add to the pie chart. The code on the Dashboard is then:
 
-`<%= pie_chart [
+```ruby
+  <%= pie_chart [
   ["Protein (g)", @protein_consumed],
   ["Fat (g)", @fat_consumed],
   ["Carbohydrates (g)", @carbs_consumed]
-] %>`
+  ] %>
+```
 
 
 ### Potential Improvements Moving Forward
