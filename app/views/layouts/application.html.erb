@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>Nutritionist's Friend</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
   <%= javascript_include_tag "https://www.google.com/jsapi", "chartkick" %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => false %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => false %>
@@ -18,7 +19,7 @@
 
     <p class="navbar-text"><%= current_user.first_name + " " + current_user.last_name %></p>
     <p class="navbar-text"><%= link_to 'Home', home_index_path, method: :get %></p>
-    <p class="navbar-text"><%= link_to 'User Details', edit_user_registration_path, method: :get %></p>
+    <p class="navbar-text"><%= link_to 'Settings', edit_user_registration_path, method: :get %></p>
     <p class="navbar-text"><%= link_to 'Food Log', controller: 'intakes' %></p>
     <p class="navbar-text"><%= link_to 'Add Food', search_path, method: :get %></p>
     <p class="navbar-text"><%= link_to 'Bodyweight Log', bodyweights_path, method: :get %></p>
