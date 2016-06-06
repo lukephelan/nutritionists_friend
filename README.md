@@ -192,6 +192,5 @@ switch between charts so the User does not need to scroll down so far
 6. A personal blog for Users to record their experience, and to interact with
 their Nutritionist, who in turn, can make comments to their blog
 7. Users can upload photos to their personal blog to show weight loss (or gain)
-8. Pagination on the log tables
-9. Fix the daily chart for calories as it displays very small fractions
+8. Fix the daily chart for calories as it displays very small fractions
 when nothing has been logged
