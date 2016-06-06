@@ -3,7 +3,9 @@ class BodyweightsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
-    @bodyweights = Bodyweight.where(user_id:current_user.id).order("bodyweight_recorded_date DESC")
+    @bodyweights = Bodyweight.where(user_id:current_user.id)
+    .order("bodyweight_recorded_date DESC")
+    .paginate(page: params[:page], per_page: 20)
   end
 
   def show

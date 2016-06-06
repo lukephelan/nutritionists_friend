@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem "chartkick"
 gem 'groupdate'
 # gem 'active_median'
-
+gem 'will_paginate', '~> 3.1.0'
 gem 'httparty'
 
 gem 'bootstrap-sass'

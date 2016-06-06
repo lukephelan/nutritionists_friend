@@ -3,7 +3,10 @@ class IntakesController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
-    @intakes = Intake.where(user_id:current_user.id).order("logged_date DESC")
+    @intakes = Intake.where(user_id:current_user.id)
+    .order("logged_date DESC")
+    .paginate(page: params[:page], per_page: 20)
+
   end
 
   def show
