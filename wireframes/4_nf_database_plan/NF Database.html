@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><meta name="exporter-version" content="Evernote Mac 6.5 (453172)"/><meta name="altitude" content="9.981191635131836"/><meta name="author" content="Luke Phelan"/><meta name="created" content="2016-05-29 02:33:31 +0000"/><meta name="latitude" content="-37.85560477499352"/><meta name="longitude" content="144.9671017514716"/><meta name="source" content="desktop.mac"/><meta name="updated" content="2016-06-03 00:15:58 +0000"/><title>NF Database</title></head><body>
+<div>
+<div><b>app_user_type</b></div>
+<div><br/></div>
+<div><i>Each row identifies a user type, which will be either “admin” or “client”. This will affect what sort of permissions they have over the database and what their dashboard is like. For example, “client” can only view data that matches their own ID. In contrast, “admin” can view the information of all users.</i></div>
+<div><br/></div>
+</div>
+<ul>
+<li>app_user_type_id:</li>
+<li>app_user_type_description:text</li>
+</ul>
+<div><br/></div>
+<div>     has_many :app_users</div>
+<div><b><br/></b></div>
+<div><b>app_user</b></div>
+<div><br/></div>
+<div><i>Each row identifies a user and their unique information.</i></div>
+<div><br/></div>
+<ul>
+<li>app_user_id:</li>
+<li>app_user_type:references</li>
+<li>first_name:text</li>
+<li>last_name:text</li>
+<li>sex:text</li>
+<li>height_cm:integer</li>
+<li>date_of_birth:date</li>
+<li>email_address:text</li>
+<li>password_digest:text</li>
+<li>profile_picture:text</li>
+<li>user_commencement_date:date</li>
+</ul>
+<div><br/></div>
+<div>     has_many :food_intake_logs</div>
+<div>     has_many :bodyweight_logs</div>
+<div><br/></div>
+<div>     <i>How to reference app_user_type?</i></div>
+<div><br/></div>
+<div><b>intake</b></div>
+<div><br/></div>
+<ul>
+<li>food_intake_log_id</li>
+<li>app_user_id:references</li>
+<li>logged_time:time</li>
+<li>logged_date:date</li>
+<li>consumed_item:text [API]</li>
+<li>consumed_uom:text [API table?]</li>
+<li>consumed_qty:integer</li>
+</ul>
+<div><br/></div>
+<div>     belongs_to :app_user</div>
+<div><br/></div>
+<div><b>unit_of_measure</b></div>
+<div><b><br/></b></div>
+<div>???</div>
+<div><br/></div>
+<div><b>proximate</b></div>
+<div><br/></div>
+<ul>
+<li>proximate_intake_log_id</li>
+<li>food_intake_log_id:references</li>
+<li>water_g:integer</li>
+<li>energy_kcal:integer</li>
+<li>protein_g:integer</li>
+<li>total_fat_g:integer</li>
+<li>carbohydrate_g:integer</li>
+<li>total_dietary_fibre_g:integer</li>
+<li>total_sugar_g:integer</li>
+</ul>
+<div><br/></div>
+<div>     belongs_to :food_intake_log</div>
+<div><br/></div>
+<div><b>mineral</b></div>
+<div><br/></div>
+<ul>
+<li>mineral_intake_log_id</li>
+<li>food_intake_log_id:references</li>
+<li>calcium_mg:integer</li>
+<li>iron_mg:integer</li>
+<li>magnesium_mg:integer</li>
+<li>phosphorus_mg:integer</li>
+<li>potassium_mg:integer</li>
+<li>sodium_mg:integer</li>
+<li>zinc_mg:integer</li>
+</ul>
+<div><br/></div>
+<div>     belongs_to :food_intake_log</div>
+<div><br/></div>
+<div><b>vitamin</b></div>
+<div><br/></div>
+<ul>
+<li>vitamin_intake_log_id</li>
+<li>food_intake_log_id:references</li>
+<li>vitamin_c_mg:integer</li>
+<li>thiamin_mg:integer</li>
+<li>riboflavin_mg:integer</li>
+<li>niacin_mg:integer</li>
+<li>vitamin_b-6_mg:integer</li>
+<li>folate_dfe_μg:integer</li>
+<li>vitamin_b-12_μg:integer</li>
+<li>vitamin_a_rae_μg:integer</li>
+<li>vitamin_a_iu:integer</li>
+<li>vitamin_e_mg:integer</li>
+<li>vitamin_d_μg:integer</li>
+<li>vitamin_d_iu:integer</li>
+<li>vitamin_k_μg:integer</li>
+</ul>
+<div><br/></div>
+<div>     belongs_to :food_intake_log</div>
+<div><br/></div>
+<div><b>lipid</b></div>
+<div><br/></div>
+<ul>
+<li>lipid_intake_log_id</li>
+<li>food_intake_log_id:references</li>
+<li>saturated_fatty_acids_g:integer</li>
+<li>monounsaturated_fatty_acids_g:integer</li>
+<li>polyunsaturated_fatty_acid_g:integer</li>
+<li>trans_fatty_acid_g:integer</li>
+<li>cholesterol_mg:integer</li>
+</ul>
+<div><br/></div>
+<div>     belongs_to :food_intake_log</div>
+<div><br/></div>
+<div><b>other</b></div>
+<div><br/></div>
+<ul>
+<li>other_nutrient_intake_log_id</li>
+<li>food_intake_log_id:references</li>
+<li>caffine_mg:integer</li>
+</ul>
+<div><br/></div>
+<div>     belongs_to :food_intake_log</div>
+<div><br/></div>
+<div><b>bodyweight</b></div>
+<div><br/></div>
+<ul>
+<li>bodyweight_log_id</li>
+<li>app_user_id:references</li>
+<li>bodyweight_recorded_date:date</li>
+<li>bodyweight_recorded_kg:integer</li>
+</ul>
+<div><br/></div>
+<div>     belongs_to :app_user</div>
+<div><br/></div>
+<div>
+<div><b><span style="background-color: rgb(255, 250, 165);-evernote-highlight:true;">goal</span></b></div>
+<div><span style="background-color: rgb(255, 250, 165);-evernote-highlight:true;"><br/></span></div>
+</div>
+<ul>
+<li><span style="background-color: rgb(255, 250, 165);-evernote-highlight:true;">goal_id</span></li>
+<li><span style="background-color: rgb(255, 250, 165);-evernote-highlight:true;">app_user_id (fk)</span></li>
+<li><span style="background-color: rgb(255, 250, 165);-evernote-highlight:true;">goal_commencement_date</span></li>
+<li><span style="background-color: rgb(255, 250, 165);-evernote-highlight:true;">goal_completion_date</span></li>
+</ul>
+</body></html>
