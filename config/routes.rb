@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :blogs
   resources :bodyweights
   resources :others
   resources :lipids

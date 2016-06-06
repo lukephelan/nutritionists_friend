@@ -11,10 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160603005832) do
+ActiveRecord::Schema.define(version: 20160606021011) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "blogs", force: :cascade do |t|
+    t.integer  "user_id"
+    t.text     "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "blogs", ["user_id"], name: "index_blogs_on_user_id", using: :btree
 
   create_table "bodyweights", force: :cascade do |t|
     t.integer  "user_id"
@@ -132,6 +141,7 @@ ActiveRecord::Schema.define(version: 20160603005832) do
 
   add_index "vitamins", ["intake_id"], name: "index_vitamins_on_intake_id", using: :btree
 
+  add_foreign_key "blogs", "users"
   add_foreign_key "bodyweights", "users"
   add_foreign_key "intakes", "users"
   add_foreign_key "lipids", "intakes"

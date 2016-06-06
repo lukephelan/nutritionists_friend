@@ -189,8 +189,7 @@ target intake values or bodyweights on the relevant charts
 switch between charts so the User does not need to scroll down so far
 4. Slider to change date range for historical data charts
 5. More User information, such as height and profile pictures
-6. A personal blog for Users to record their experience, and to interact with
-their Nutritionist, who in turn, can make comments to their blog
+6. Nutritionist can make comments on the blog
 7. Users can upload photos to their personal blog to show weight loss (or gain)
 8. Fix the daily chart for calories as it displays very small fractions
 when nothing has been logged

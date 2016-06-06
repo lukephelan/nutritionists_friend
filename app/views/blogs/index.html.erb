@@ -1,0 +1,28 @@
+<h1>Blog</h1>
+
+<%= link_to "Create New Post", new_blog_path, method: :get %>
+
+<%= will_paginate @blogs %>
+
+<div class="intake-log">
+<table class="table table-striped">
+  <tr>
+    <th>Date</th>
+    <th>Content</th>
+  </tr>
+
+  <% @blogs.each do |blog| %>
+    <tr>
+      <td><%= blog.created_at.strftime("%d/%m/%Y") %></td>
+      <td><%= blog.content %></td>
+      <td><%= link_to 'Show', blog_path(blog) %></td>
+      <td><%= link_to 'Edit', edit_blog_path(blog) %></td>
+      <td><%= link_to 'Delete', blog_path(blog),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
+</div>
+
+<%= will_paginate @blogs %>
