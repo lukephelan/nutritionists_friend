@@ -18,7 +18,8 @@ used:
 3. 'pg' - for PostgreSQL
 4. 'chartkick' - to access and utilise the Google Chart API
 5. 'groupdate' - groups data in a date range for the 'chartkick' gem
-5. 'bootstrap-sass' - to aid with the styling
+6. 'bootstrap-sass' - to aid with the styling
+7. 'will_paginate' - for pagination on the food and bodyweight log
 
 #### API's
 
