@@ -3,7 +3,7 @@ class BlogsController < ApplicationController
   def index
     @blogs = Blog.where(user_id:current_user.id)
     .order("created_at DESC")
-    .paginate(page: params[:page], per_page: 20)
+    .paginate(page: params[:page], per_page: 5)
   end
 
   def show

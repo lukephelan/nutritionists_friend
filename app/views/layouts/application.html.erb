@@ -17,12 +17,12 @@
 <% if current_user %>
 <nav class="navbar navbar-default">
 
-    <p class="navbar-text"><%= current_user.first_name + " " + current_user.last_name %></p>
+    <p class="navbar-text"><strong><%= current_user.first_name + " " + current_user.last_name %></strong></p>
     <p class="navbar-text"><%= link_to 'Home', home_index_path, method: :get %></p>
-    <p class="navbar-text"><%= link_to 'Settings', edit_user_registration_path, method: :get %></p>
     <p class="navbar-text"><%= link_to 'Food Log', controller: 'intakes' %></p>
     <p class="navbar-text"><%= link_to 'Bodyweight Log', bodyweights_path, method: :get %></p>
     <p class="navbar-text"><%= link_to 'Blog', blogs_path, method: :get %></p>
+    <p class="navbar-text"><%= link_to 'Settings', edit_user_registration_path, method: :get %></p>
     <p class="navbar-text"><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></p>
 </nav>
   <% end %>
