@@ -6,15 +6,18 @@ class HomeController < ApplicationController
     # otherwise, the index view will be displayed for them to log in
     if current_user
 
+      # select the bodyweight_recorded_kg column for use in the area chart
+      # but only for the current user
+
       @bodyweight_over_time = Bodyweight.where(user_id: current_user.id)
       .select("bodyweight_recorded_kg")
-
 
       # join the intakes and proximates tables using the intakes foreign key
       # then sum all the nutrients we want, where the date is equal to today
       # and only for the current user
       # this can then be added to the pie/bar chart to show what nutrients
       # have been eaten today
+
       @calories_consumed = Proximate.joins(:intake)
         .where(intakes: {user_id: current_user.id})
         .where(intakes: {logged_date: Date.today})
@@ -32,12 +35,12 @@ class HomeController < ApplicationController
         .where(intakes: {logged_date: Date.today})
         .sum(:total_fat_g)
 
-
       # join the intakes and vitamins tables using the intakes foreign key
       # then sum all the nutrients we want, where the date is equal to today
       # and only for the current user
       # this can then be added to the bar chart to show what nutrients
       # have been eaten today
+
       @vitamin_c_consumed = Vitamin.joins(:intake)
         .where(intakes: {user_id: current_user.id})
         .where(intakes: {logged_date: Date.today})
@@ -83,12 +86,12 @@ class HomeController < ApplicationController
         .where(intakes: {logged_date: Date.today})
         .sum(:vitamin_k_μg)
 
-
       # join the intakes and minerals tables using the intakes foreign key
       # then sum all the nutrients we want, where the date is equal to today
       # and only for the current user
       # this can then be added to the bar chart to show what nutrients
       # have been eaten today
+
       @calcium_consumed = Mineral.joins(:intake)
         .where(intakes: {user_id: current_user.id})
         .where(intakes: {logged_date: Date.today})
@@ -118,12 +121,12 @@ class HomeController < ApplicationController
         .where(intakes: {logged_date: Date.today})
         .sum(:zinc_mg)
 
-
       # join the intakes and lipids tables using the intakes foreign key
       # then sum all the nutrients we want, where the date is equal to today
       # and only for the current user
       # this can then be added to the bar chart to show what nutrients
       # have been eaten today
+
       @saturated_fat_consumed = Lipid.joins(:intake)
         .where(intakes: {user_id: current_user.id})
         .where(intakes: {logged_date: Date.today})
@@ -145,12 +148,11 @@ class HomeController < ApplicationController
         .where(intakes: {logged_date: Date.today})
         .sum(:cholesterol_mg)
 
-
-
       # join the intakes and proximates tables using the intakes foreign key
       # and then select all the entries for the nutrient we want
       # and only for the current user
       # this can then be used to chart intake over time
+
       @protein_over_time = Proximate.joins(:intake)
         .where(intakes: {user_id: current_user.id})
         .select("protein_g")
@@ -161,6 +163,10 @@ class HomeController < ApplicationController
         .where(intakes: {user_id: current_user.id})
         .select("total_fat_g")
 
+      # join the intakes and vitamins tables using the intakes foreign key
+      # and then select all the entries for the nutrient we want
+      # and only for the current user
+      # this can then be used to chart intake over time
 
       @vitamin_c_over_time = Vitamin.joins(:intake)
         .where(intakes: {user_id: current_user.id})
@@ -196,6 +202,11 @@ class HomeController < ApplicationController
         .where(intakes: {user_id: current_user.id})
         .select("vitamin_k_μg")
 
+      # join the intakes and minerals tables using the intakes foreign key
+      # and then select all the entries for the nutrient we want
+      # and only for the current user
+      # this can then be used to chart intake over time
+
       @calcium_over_time = Mineral.joins(:intake)
         .where(intakes: {user_id: current_user.id})
         .select("calcium_mg")
@@ -217,6 +228,11 @@ class HomeController < ApplicationController
       @zinc_over_time = Mineral.joins(:intake)
         .where(intakes: {user_id: current_user.id})
         .select("zinc_mg")
+
+      # join the intakes and lipids tables using the intakes foreign key
+      # and then select all the entries for the nutrient we want
+      # and only for the current user
+      # this can then be used to chart intake over time
 
       @sat_fat_over_time = Lipid.joins(:intake)
         .where(intakes: {user_id: current_user.id})

@@ -17,6 +17,11 @@ class IntakesController < ApplicationController
 
   def new
     @intake = Intake.new
+
+    # split the string chosen_food into an array with two elements
+    # use the zeroeth element for the food name
+    # use the oneth element for the database number
+
     @foodname = params[:chosen_food].split('$')[0]
     @foodndbno = params[:chosen_food].split('$')[1]
   end

@@ -15,7 +15,12 @@ class Intake < ActiveRecord::Base
   private
     def fetch_nutrients
 
-      # Fetch the nutrients for this intake log - store them in the DB
+      # fetch the nutrients for this intake log and store them in the database
+      # for each nutrient, check if it exists in the array from the API
+      # if it does exist, retrieve the index value, and use that to
+      # find its corresponding value
+      # this value is equivalent to 100g of food, so convert it to the equivalent
+      # value based on consumed_qty that was passed in the form
 
       @api_response = HTTParty.get "http://api.nal.usda.gov/ndb/reports/?ndbno=#{self.ndbno}&type=b&format=json&api_key=8gYd9RFbST30DyUJm7pJ0Q2Rbjsv9fseOAKe2O6K"
 
