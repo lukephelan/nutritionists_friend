@@ -18,7 +18,7 @@ used:
 3. 'pg' - for PostgreSQL
 4. 'chartkick' - to access and utilise the Google Chart API
 5. 'groupdate' - groups data in a date range for the 'chartkick' gem
-5. 'bootstrap-sass' - to aid with the CSS
+5. 'bootstrap-sass' - to aid with the styling
 
 #### API's
 
@@ -32,15 +32,15 @@ The Google Chart API is handled by the 'chartkick' gem.
 
 **1. Using Devise with an existing Resource**
 
-  Prior to implementing Devise I had already created a Users with scaffold. So
+  Prior to implementing Devise I had already created Users with scaffold. So
   all the necessary views and routes had been created, as well as the User table.
 
   Adding Devise over the top of this duplicated many views and routes, causing a
-  lot of routing errors when navigating the page. Additionally, Devise added the
+  lot of routing errors when navigating the site. Additionally, Devise added the
   email and password columns to the table which I had already created.
 
-  Being this early on I decided it was quicker to restart the Rails project and
-  build the Users again with Devise.
+  Being this early on I decided it was more practical to restart the Rails
+  project and build the Users with Devise.
 
 **2. Retrieving two values with one radio selection**
 
@@ -50,13 +50,12 @@ The Google Chart API is handled by the 'chartkick' gem.
   database number.
 
   To achieve this, I assigned the value I wanted as a combination of both
-  results as string, separated by the character '$':
+  results as a string, separated by the '$' character:
 
-`<input type="radio" name="chosen_food" value="<%=@search_result["list"]["item"]
-[i]["name"]%>$<%= @search_result["list"]["item"][i]["ndbno"] %>">`
+`<input type="radio" name="chosen_food" value="<%=@search_result["list"]["item"][i]["name"]%>$<%= @search_result["list"]["item"][i]["ndbno"]%>">`
 
   The string was then split at the '$' character which returns an array. The
-  zeroeth element of the array is stored to the table for the food name, and the
+  zeroeth element of the array is stored in the table as the food name, and the
   oneth element of the array is stored as the food database number in the Intakes
   Controller:
 
@@ -64,21 +63,21 @@ The Google Chart API is handled by the 'chartkick' gem.
     @intake = Intake.new
     @foodname = params[:chosen_food].split('$')[0]
     @foodndbno = params[:chosen_food].split('$')[1]
-  end
+    end
 `
 
 **3. Adding records to multiple tables at the same time**
 
-  The Intakes table and all of the nutrient tables are related with a one-to-one
-  relationship. I needed to create records on each nutrient table when a new
-  record is created on the Intakes table. To do this, I needed to use a Callback.
+  All the nutrients tables are connected to the Intakes table with a one-to-one.
+  I needed to create records on each nutrient table when a new record is created
+  on the Intakes table. To do this, I needed to use a Callback.
 
   Essentially, after a record is created, a function called "fetch_nutrients" is
   run that assigns all the values to the nutrient tables based on corresponding
-  values from the Intakes table (as they are all affected by the quantity of food
-    consumed).
+  values from the Intakes table, as they are all affected by the quantity of food
+  consumed.
 
-    This is run on the Intakes Model and is called as follows:
+  This is run on the Intakes Model and is called as follows:
 
 `after_create :fetch_nutrients`
 
@@ -119,12 +118,12 @@ end`
 
   Displaying data on the Dashboard proved to be quite tricky. The documentation
   for the Chartkick gem was quite clear in regards to installation, however I
-  found that the explanation of how to pass in data was quite limited. To make
-  this extra difficult, I was trying to display data from two separate tables
-  that are linked.
+  found that the explanation of how to pass in data was quite limited for
+  someone new to Ruby on Rails such as myself. To make this extra difficult,
+  I was trying to display data from two separate tables that were linked.
 
   To deal with this I had to figure out how to join tables and I had to think hard
-  about what type of data I was giving to Chartkick (a single entry, a column or a
+  about what type of data I was giving to Chartkick (a single entry, a column, or a
   row, etc.).
 
   As an example, to display Vitamin intake over time, I had to join the Vitamins
@@ -132,9 +131,7 @@ end`
   data that is only relevant to the user who is logged in, and then selected the
   column that I wanted:
 
-`@vitamin_c_over_time = Vitamin.joins(:intake)
-  .where(intakes: {user_id: current_user.id})
-  .select("vitamin_c_mg")`
+`@vitamin_c_over_time = Vitamin.joins(:intake).where(intakes: {user_id: current_user.id}).select("vitamin_c_mg")`
 
   This is then presented on the Dashboard page as follows:
 
@@ -144,7 +141,7 @@ end`
     format: "%B %d, %Y").sum(:vitamin_c_mg), width: "50%"}
   ] %>`
 
-  This snippet shows one vitamin in a hash within an array. In the actual
+  This snippet shows one vitamin as a hash within an array. In the actual
   Dashboard code each nutrient is included as another element in the array (too
   much code to show here).
 
@@ -165,17 +162,17 @@ end`
 ] %>`
 
 
-### Work for the Future
+### Potential Improvements Moving Forward
 
 1. Custom foods
-2. Log-in for the admin (Nutritionist) to set goals for users and display
-target intake values on the relevant charts
+2. Log-in for the admin (Nutritionist) to set goals for Users and display
+target intake values or bodyweights on the relevant charts
 3. Selector on the Dashboard to view charts of interest only, or to at least
-switch between charts so the user does not need to scroll down so far
+switch between charts so the User does not need to scroll down so far
 4. Slider to change date range for historical data charts
-5. More user information, such as height and profile pictures
-6. A personal blog for users to interact with their Nutritionist, who in turn,
-can make comments to their blog
+5. More User information, such as height and profile pictures
+6. A personal blog for Users to record their experience, and to interact with
+their Nutritionist, who in turn, can make comments to their blog
 7. Users can upload photos to their personal blog to show weight loss (or gain)
 8. Pagination on the log tables
 9. Fix the daily chart for calories as it displays very small fractions
