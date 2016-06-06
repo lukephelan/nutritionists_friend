@@ -52,7 +52,9 @@ The Google Chart API is handled by the 'chartkick' gem.
   To achieve this, I assigned the value I wanted as a combination of both
   results as a string, separated by the '$' character:
 
-`<input type="radio" name="chosen_food" value="<%=@search_result["list"]["item"][i]["name"]%>$<%= @search_result["list"]["item"][i]["ndbno"]%>">`
+```ruby
+<input type="radio" name="chosen_food" value="<%=@search_result["list"]["item"][i]["name"]%>$<%= @search_result["list"]["item"][i]["ndbno"]%>">
+```
 
   The string was then split at the '$' character which returns an array. The
   zeroeth element of the array is stored in the table as the food name, and the
@@ -80,7 +82,9 @@ The Google Chart API is handled by the 'chartkick' gem.
 
   This is run on the Intakes Model and is called as follows:
 
-`after_create :fetch_nutrients`
+```ruby
+after_create :fetch_nutrients
+```
 
 **4. Retrieving the nutrients from the API when the array indices change**
 
@@ -101,9 +105,11 @@ The Google Chart API is handled by the 'chartkick' gem.
 
   For example:
 
-`if @energy_index = @api_response["report"]["food"]["nutrients"].index {|h| h["name"] == "Energy"}
+```ruby
+if @energy_index = @api_response["report"]["food"]["nutrients"].index {|h| h["name"] == "Energy"}
   @proximate.energy_kcal = (@api_response["report"]["food"]["nutrients"][@energy_index]["value"].to_f)*(self.consumed_qty.to_f/100)
-end`
+end
+```
 
 **5. Deleting intakes when there is a dependant entry in a second table**
 
@@ -113,7 +119,9 @@ end`
 
   To overcome this, I assigned a destroy dependence in the Intakes model:
 
-`has_one :vitamin, dependent: :destroy`
+```ruby
+has_one :vitamin, dependent: :destroy
+```
 
 **6. Selecting data for the charts**
 
@@ -132,7 +140,9 @@ end`
   data that is only relevant to the user who is logged in, and then selected the
   column that I wanted:
 
-`@vitamin_c_over_time = Vitamin.joins(:intake).where(intakes: {user_id: current_user.id}).select("vitamin_c_mg")`
+```ruby
+@vitamin_c_over_time = Vitamin.joins(:intake).where(intakes: {user_id: current_user.id}).select("vitamin_c_mg")
+```
 
   This is then presented on the Dashboard page as follows:
 
