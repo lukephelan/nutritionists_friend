@@ -23,7 +23,7 @@ class Intake < ActiveRecord::Base
       # value based on consumed_qty that was passed in the form
 
       @api_key = ENV['NF_API']
-      @api_response = HTTParty.get "http://api.nal.usda.gov/ndb/reports/?ndbno=#{self.ndbno}&type=b&format=json&api_key=#{api_key}"
+      @api_response = HTTParty.get "http://api.nal.usda.gov/ndb/reports/?ndbno=#{self.ndbno}&type=b&format=json&api_key=#{@api_key}"
 
       @proximate = Proximate.new
       @proximate.intake_id = self.id

@@ -68,7 +68,7 @@ class IntakesController < ApplicationController
 
   def result
     @api_key = ENV['NF_API']
-    @search_result = HTTParty.get "http://api.nal.usda.gov/ndb/search/?format=json&sort=r&offset=0&api_key=#{api_key}&q=#{params[:q]}"
+    @search_result = HTTParty.get "http://api.nal.usda.gov/ndb/search/?format=json&sort=r&offset=0&api_key=#{@api_key}&q=#{params[:q]}"
   end
 
 
