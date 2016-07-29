@@ -5,9 +5,9 @@ gem 'groupdate'
 # gem 'active_median'
 gem 'will_paginate', '~> 3.1.0'
 gem 'httparty'
-
+gem 'mini_magick'
 gem 'bootstrap-sass'
-
+gem 'carrierwave'
 gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'

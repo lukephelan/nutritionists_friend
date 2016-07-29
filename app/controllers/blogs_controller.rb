@@ -22,7 +22,12 @@ class BlogsController < ApplicationController
     @blog = Blog.new(blog_params)
     @blog.user_id = current_user.id
 
+    @blog.snapshot.url # => '/url/to/file.png'
+    @blog.snapshot.current_path # => 'path/to/file.png'
+    @blog.snapshot_identifier # => 'file.png'
+
     if @blog.save
+
         redirect_to @blog
       else
         render 'new'

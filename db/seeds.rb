@@ -5,3 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Comment.create([{post_id: 1 , content: 'This is a great point.',
+  like: true},
+  {post_id: 2, content: 'This is not a very good point.',
+    like: false}])
