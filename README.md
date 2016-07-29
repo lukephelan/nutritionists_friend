@@ -5,6 +5,7 @@
 This web application is for logging food and nutrient intake. This
 application also allows for logging and tracking bodyweight.
 
+This application is hosted online at [https://nutritionists-friend.herokuapp.com/](https://nutritionists-friend.herokuapp.com/).
 
 ### Technology Used
 
