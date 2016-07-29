@@ -22,7 +22,7 @@ class Intake < ActiveRecord::Base
       # this value is equivalent to 100g of food, so convert it to the equivalent
       # value based on consumed_qty that was passed in the form
 
-      @api_key = process.env['NF_API']
+      @api_key = ENV['NF_API']
       @api_response = HTTParty.get "http://api.nal.usda.gov/ndb/reports/?ndbno=#{self.ndbno}&type=b&format=json&api_key=#{api_key}"
 
       @proximate = Proximate.new
